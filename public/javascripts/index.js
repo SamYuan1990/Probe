@@ -1,18 +1,23 @@
-function getrandom(num , mul) {
-    var value = [ ];
-    for ( i=0; i <= num; i++ ) {
-        var rand = Math.random() * mul;
-        value.push(rand);
-    }
-    return value;
-}
+var xmlhttp=new XMLHttpRequest();
+xmlhttp.open("GET","./api/getBatchTimeout",false);
+xmlhttp.send();
+var BatchTimeout = xmlhttp.responseText.split(',');
 
-var TestTruns = 10
-var BatchTimeout = [0.75,0.75,0.75,0.75,1,1,1,1,2,2,2,2,1.5,1.5,1.5,1.5]//getrandom(TestTruns,1.5)
-var TPS = [180,291,333,351,172,291,337,319,182,260,323.54,323.52,172,268,348,310]//getrandom(TestTruns,600)
-var MaxMessageCount = [10,40,80,120,10,40,80,120,10,40,80,120,10,40,80,120]//getrandom(TestTruns,120)
-var AbsoluteMaxBytes = [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]//getrandom(TestTruns,128)
-var PreferredMaxBytes = [256,256,256,256,256,256,256,256,256,256,256,256,256,256,256,256]//getrandom(TestTruns,2048)
+xmlhttp.open("GET","./api/getTPS",false);
+xmlhttp.send();
+var TPS = xmlhttp.responseText.split(',');
+
+xmlhttp.open("GET","./api/getMaxMessageCount",false);
+xmlhttp.send();
+var MaxMessageCount = xmlhttp.responseText.split(',');
+
+xmlhttp.open("GET","./api/getAbsoluteMaxBytes",false);
+xmlhttp.send();
+var AbsoluteMaxBytes = xmlhttp.responseText.split(',');
+
+xmlhttp.open("GET","./api/getPreferredMaxBytes",false);
+xmlhttp.send();
+var PreferredMaxBytes = xmlhttp.responseText.split(',');
 
 var Turn1 =  {
      opacity: 0.5,
@@ -114,5 +119,7 @@ var layout = {
     pad: 0
   },
 }    
-     
+console.log(BatchTimeout);
+console.log(Turn1);
+
 Plotly.newPlot('myDiv', [Turn1,Turn2,Turn3,Turn4,Turn5,Turn6], layout);
