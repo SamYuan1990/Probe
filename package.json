@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node ./bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "export NODE_ENV=test PORT=3300 && mocha 'test/**/*.test.js' --exit"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,9 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "pug": "^3.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.2.0",
+    "supertest": "^5.0.0"
   }
 }
