@@ -12,11 +12,11 @@ describe('# test app.js', function () {
             .get('/api')
             .expect(200, done)
     });
-    it('GET /api/run', function (done) {
+    /*it('GET /api/run', function (done) {
         request
             .get('/api/run')
             .expect(200, done)
-    });
+    });*/
     it('GET /api/getBatchTimeout', function (done) {
         request
             .get('/api/getBatchTimeout')

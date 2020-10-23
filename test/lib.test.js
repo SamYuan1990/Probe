@@ -2,6 +2,32 @@ const libs = require('../lib/libs');
 var expect = require('chai').expect;
 
 describe('# libs', function () {
+    /*it('run', function(done){
+        CmdInfo = {
+            Chaincode:'sample',
+        }
+        BatchTimeout = [2];
+        MaxMessageCount = [20];
+        AbsoluteMaxBytes= [10];
+        PreferredMaxBytes= [10];
+        libs.run(CmdInfo,BatchTimeout,MaxMessageCount,AbsoluteMaxBytes,PreferredMaxBytes);
+        done();
+    })
+*/
+/*
+    it('start', function(done){
+        var TurnInfo = {
+            Chaincode:'sample',
+            BatchTimeout:2,
+            MaxMessageCount:200,
+            AbsoluteMaxBytes:2,
+            PreferredMaxBytes:2,
+          }
+        var startup = '/minifab';
+        rs = libs.startup(startup,TurnInfo);
+        expect(true).to.deep.equal(parseFloat(rs) === 0);
+        done();
+    });
 
     it('tapeTPS', function(done){
         var CmdInfo = {
@@ -14,6 +40,13 @@ describe('# libs', function () {
         done();
     })
 
+    it('tear down', function(done){
+        var teardown = '/minifab';
+        rs = libs.teardown(teardown);
+        expect(true).to.deep.equal(parseFloat(rs) === 0);
+        done();
+    });
+*/
     it('appendRS', function(done){
         libs.init();
         libs.appendRS('sample,0.75,10,2,256, 180.038278,');

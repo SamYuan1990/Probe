@@ -28,24 +28,18 @@ router.get('/getTPS', function(req, res, next) {
 });
 
 router.get('/run', function(req, res, next) {
+  var d = new Date();
   libs.init();
-  libs.appendRS('sample,0.75,10,2,256, 180.038278,');
-  libs.appendRS('sample,0.75,40,2,256, 291.310916,');
-  libs.appendRS('sample,0.75,80,2,256, 333.041573,');
-  libs.appendRS('sample,0.75,120,2,256, 351.752320,');
-  libs.appendRS('sample,1,10,2,256, 172.872861,');
-  libs.appendRS('sample,1,40,2,256, 291.617799,');
-  libs.appendRS('sample,1,80,2,256, 337.826232,');
-  libs.appendRS('sample,1,120,2,256, 319.039588,');
-  libs.appendRS('sample,2,10,2,256, 182.105577,');
-  libs.appendRS('sample,2,40,2,256, 260.276446,');
-  libs.appendRS('sample,2,80,2,256, 323.542760,');
-  libs.appendRS('sample,2,120,2,256, 323.526945,');
-  libs.appendRS('sample,1.5,10,2,256, 172.745382,');
-  libs.appendRS('sample,1.5,40,2,256, 268.041591,');
-  libs.appendRS('sample,1.5,80,2,256, 348.150198,');
-  libs.appendRS('sample,1.5,120,2,256, 310.915616,');
-  res.send('success');
+    CmdInfo = {
+      Chaincode:'sample',
+  }
+  BatchTimeout = [2,4];
+  MaxMessageCount = [20];
+  AbsoluteMaxBytes= [10];
+  PreferredMaxBytes= [10];
+  libs.run(CmdInfo,BatchTimeout,MaxMessageCount,AbsoluteMaxBytes,PreferredMaxBytes);
+  //console.log(new Date().toString());
+  res.send(d.toString()+' success at '+new Date().toString());
 });
 
 module.exports = router;
