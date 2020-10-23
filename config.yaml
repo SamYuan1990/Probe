@@ -1,0 +1,36 @@
+# Definition of nodes
+peer1: &peer1
+  addr: peer1.org0.example.com:7051
+  tls_ca_cert: /config/minifabric/vars/keyfiles/peerOrganizations/org0.example.com/msp/tlscacerts/tlsca1.org0.example.com-cert.pem 
+
+peer2: &peer2
+  addr: peer1.org1.example.com:7051
+  tls_ca_cert: /config/minifabric/vars/keyfiles/peerOrganizations/org1.example.com/msp/tlscacerts/tlsca1.org1.example.com-cert.pem 
+
+orderer1: &orderer1
+  addr: orderer1.example.com:7050
+  tls_ca_cert: /config/minifabric/vars/keyfiles/ordererOrganizations/example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+
+# Nodes to interact with
+endorsers:
+  - *peer1
+  - *peer2
+# we might support multi-committer in the future for more complex test scenario,
+# i.e. consider tx committed only if it's done on >50% of nodes. But for now,
+# it seems sufficient to support single committer.
+committer: *peer2
+orderer: *orderer1
+
+# Invocation configs
+channel: mychannel
+chaincode: simple
+args:
+  - query
+  - a
+mspid: org0-example-com
+
+private_key: /config/minifabric/vars/keyfiles/peerOrganizations/org0.example.com/users/Admin@org0.example.com/msp/keystore/priv_sk
+sign_cert: /config/minifabric/vars/keyfiles/peerOrganizations/org0.example.com/users/Admin@org0.example.com/msp/signcerts/Admin@org0.example.com-cert.pem
+num_of_conn: 10
+client_per_conn: 10
+
