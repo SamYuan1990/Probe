@@ -33,10 +33,10 @@ router.get('/run', function(req, res, next) {
     CmdInfo = {
       Chaincode:'sample',
   }
-  BatchTimeout = [2,4];
-  MaxMessageCount = [20];
-  AbsoluteMaxBytes= [10];
-  PreferredMaxBytes= [10];
+  BatchTimeout = [0.75,1,1.5,2];
+  MaxMessageCount = [10,40,80,120];
+  AbsoluteMaxBytes= [2];
+  PreferredMaxBytes= [256];
   libs.run(CmdInfo,BatchTimeout,MaxMessageCount,AbsoluteMaxBytes,PreferredMaxBytes);
   //console.log(new Date().toString());
   res.send(d.toString()+' success at '+new Date().toString());
