@@ -1,9 +1,17 @@
-<head>
-	<!-- Load plotly.js into the DOM -->
-  <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>Input</title> 
 </head>
-
 <body>
-  <div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
-  <script src='./javascripts/index.js'></script>
+
+<form action="./api/run">
+BatchTimeout: <input type="text" name="BatchTimeout"><br>
+MaxMessageCount: <input type="text" name="MaxMessageCount"><br>
+AbsoluteMaxBytes: <input type="text" name="AbsoluteMaxBytes"><br>
+PreferredMaxBytes: <input type="text" name="PreferredMaxBytes"><br>
+<input type="submit" value="提交">
+</form>
 </body>
+</html>
