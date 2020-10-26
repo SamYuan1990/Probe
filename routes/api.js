@@ -30,8 +30,13 @@ router.get('/getTPS', function(req, res, next) {
 router.get('/run', function(req, res, next) {
   var d = new Date();
   libs.init();
-    CmdInfo = {
+  CmdInfo = {
       Chaincode:'sample',
+      CoolDown: parseFloat(req.query.CoolDown),
+      PrepareCLI: req.query.PrepareCLI,
+      StartCLI: req.query.StartCLI,
+      TapeCLI: req.query.TapeCLI,
+      ShutDownCLI: req.query.ShutDownCLI,
   }
   BatchTimeout = [];
   console.log(req.query.BatchTimeout);

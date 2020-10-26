@@ -12,11 +12,12 @@ describe('# test app.js', function () {
             .get('/api')
             .expect(200, done)
     });
-    /*it('GET /api/run', function (done) {
+    it('GET /api/run', function (done) {
         request
-            .get('/api/run')
+            .get(`/api/run?BatchTimeout=1&MaxMessageCount=1&AbsoluteMaxBytes=1&PreferredMaxBytes=1&
+            CoolDown=1&PrepareCLI=echo&StartCLI=echo&TapeCLI=echo&ShutDownCLI=echo`)
             .expect(200, done)
-    });*/
+    });
     it('GET /api/getBatchTimeout', function (done) {
         request
             .get('/api/getBatchTimeout')

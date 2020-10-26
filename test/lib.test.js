@@ -2,18 +2,22 @@ const libs = require('../lib/libs');
 var expect = require('chai').expect;
 
 describe('# libs', function () {
-    /*it('run', function(done){
+    it('run', function(done){
         CmdInfo = {
             Chaincode:'sample',
+            CoolDown: 1,
+            PrepareCLI: 'echo',
+            StartCLI: 'echo',
+            TapeCLI: 'echo',
+            ShutDownCLI: 'echo',
         }
         BatchTimeout = [2];
         MaxMessageCount = [20];
         AbsoluteMaxBytes= [10];
         PreferredMaxBytes= [10];
-        libs.run(CmdInfo,BatchTimeout,MaxMessageCount,AbsoluteMaxBytes,PreferredMaxBytes);
+        expect(true).to.deep.equal(libs.run(CmdInfo,BatchTimeout,MaxMessageCount,AbsoluteMaxBytes,PreferredMaxBytes)===0);
         done();
     })
-*/
 /*
     it('start', function(done){
         var TurnInfo = {
