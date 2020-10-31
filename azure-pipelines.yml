@@ -9,15 +9,30 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-- script: |
-    npm install
-    npm test
-  displayName: 'npm install and test'
+jobs:
+  - job: ut
+    displayName: ut
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x'
+      displayName: 'Install Node.js'
+    - script: |
+        npm install
+        npm test
+      displayName: 'npm install and test'
 
-## http://localhost:3000/api/run?BatchTimeout=1%2C2&MaxMessageCount=10&AbsoluteMaxBytes=2&PreferredMaxBytes=4&CoolDown=5&PrepareCLI=%2FprepareConfig.sh&StartCLI=%2Fminifab&TapeCLI=docker&ShutDownCLI=%2Fminifab
-## http://localhost:3000/result
+  - job: e2e
+    displayName: e2eSample
+    steps:
+       - script: npm install
+         displayName: npmInstall
+       - script: curl -vsS https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash
+         displayName: downloadFabricSample
+       - script: docker pull guoger/tape
+         displayName: downloadTape
+       - script: cp sample/prepareConfig.sh fabric-samples/test-network
+         displayName: cpPrepareConfig
+       - script: nohup npm run e2e
+         displayName: startProbe
+       
