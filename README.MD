@@ -1,4 +1,5 @@
 # Probe
+[![Build Status](https://dev.azure.com/yy19902439/yy19902439/_apis/build/status/SamYuan1990.Probe?branchName=main)](https://dev.azure.com/yy19902439/yy19902439/_build/latest?definitionId=8&branchName=main)
 
 ## What is Probe
 ![probe define](probe.png)
@@ -41,3 +42,13 @@ You are able to know better with how your changes impacts Fabric TPS in over all
 - Auto test framework for Fabric performance, as in probe, we will invoke as byfn or minifab for your network up/down/cleanup.
 - Performance test tool for Fabric, for this we using tape.
 - GUI for tape, tape focus on once off time performance testing.
+
+## Smaple guide with Fabric Sample
+
+1. install this project `npm install`
+2. install fabric sample `curl -vsS https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash`
+3. get tape `docker pull guoger/tape`
+4. apply the bridge file to adjust block parameters for test network `cp sample/prepareConfig.sh fabric-samples/test-network`
+5. npm start
+6. access localhost:3000, submit form with placeholder
+6. access localhost:3000/result

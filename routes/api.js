@@ -32,6 +32,7 @@ router.get('/run', function(req, res, next) {
   libs.init();
   CmdInfo = {
       Chaincode:'sample',
+      Path: req.query.Path,
       CoolDown: parseFloat(req.query.CoolDown),
       PrepareCLI: req.query.PrepareCLI,
       StartCLI: req.query.StartCLI,

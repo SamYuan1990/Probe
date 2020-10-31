@@ -7,15 +7,16 @@
 <body>
 
 <form action="./api/run">
+Path: <input type="text" name="Path" placeholder="./fabric-samples/test-network/"><br>
 BatchTimeout: <input type="text" name="BatchTimeout" placeholder="1,2"><br>
 MaxMessageCount: <input type="text" name="MaxMessageCount" placeholder="10"><br>
 AbsoluteMaxBytes: <input type="text" name="AbsoluteMaxBytes" placeholder="2"><br>
 PreferredMaxBytes: <input type="text" name="PreferredMaxBytes" placeholder="4"><br>
 CoolDown: <input type="text" name="CoolDown" placeholder="5"><br>
 PrepareCLI: <input type="text" name="PrepareCLI" placeholder="/prepareConfig.sh"><br>
-StartCLI: <input type="text" name="StartCLI" placeholder="/minifab"><br>
+StartCLI: <input type="text" name="StartCLI" placeholder="/network.sh"><br>
 TapeCLI: <input type="text" name="TapeCLI" placeholder="docker"><br>
-ShutDownCLI: <input type="text" name="ShutDownCLI" placeholder="/minifab"><br>
+ShutDownCLI: <input type="text" name="ShutDownCLI" placeholder="/network.sh"><br>
 <input type="submit" value="提交">
 </form>
 </body>

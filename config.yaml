@@ -1,15 +1,15 @@
 # Definition of nodes
 peer1: &peer1
-  addr: peer1.org0.example.com:7051
-  tls_ca_cert: /config/vars/keyfiles/peerOrganizations/org0.example.com/msp/tlscacerts/tlsca1.org0.example.com-cert.pem 
+  addr: localhost:7051
+  tls_ca_cert: /config/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp/tlscacerts/tlsca.org1.example.com-cert.pem
 
 peer2: &peer2
-  addr: peer1.org1.example.com:7051
-  tls_ca_cert: /config/vars/keyfiles/peerOrganizations/org1.example.com/msp/tlscacerts/tlsca1.org1.example.com-cert.pem 
+  addr: localhost:9051
+  tls_ca_cert: /config/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp/tlscacerts/tlsca.org2.example.com-cert.pem
 
 orderer1: &orderer1
-  addr: orderer1.example.com:7050
-  tls_ca_cert: /config/vars/keyfiles/ordererOrganizations/example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+  addr: localhost:7050
+  tls_ca_cert: /config/fabric-samples/test-network/organizations/ordererOrganizations/example.com/msp/tlscacerts/tlsca.example.com-cert.pem
 
 # Nodes to interact with
 endorsers:
@@ -23,14 +23,11 @@ orderer: *orderer1
 
 # Invocation configs
 channel: mychannel
-chaincode: simple
+chaincode: basic
 args:
-  - query
-  - a
-mspid: org0-example-com
-
-private_key: /config/vars/keyfiles/peerOrganizations/org0.example.com/users/Admin@org0.example.com/msp/keystore/priv_sk
-sign_cert: /config/vars/keyfiles/peerOrganizations/org0.example.com/users/Admin@org0.example.com/msp/signcerts/Admin@org0.example.com-cert.pem
+  - GetAllAssets
+mspid: Org1MSP
+private_key: /config/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/keystore/priv_sk
+sign_cert: /config/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/signcerts/User1@org1.example.com-cert.pem
 num_of_conn: 10
 client_per_conn: 10
-
