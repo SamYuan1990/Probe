@@ -41,8 +41,8 @@ router.get('/run', function(req, res, next) {
       ShutDownCLI: req.query.ShutDownCLI,
       tapeCount: parseFloat(req.query.TapeCount),
   }
-  if (req.query.TapeCLI) {
-    CmdInfo.TapeCLI = req.query.TapeCLI;
+  if (req.query.DryRun) {
+    CmdInfo.DryRun = req.query.DryRun;
   }
   BatchTimeout = [];
   BatchTimeoutArray = req.query.BatchTimeout.toString().split(",");

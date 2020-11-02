@@ -8,7 +8,7 @@ describe('# libs', function () {
             CoolDown: 1,
             PrepareCLI: 'echo',
             StartCLI: 'echo',
-            TapeCLI: 'echo',
+            DryRun: true,
             ShutDownCLI: 'echo',
         }
         BatchTimeout = [2];
