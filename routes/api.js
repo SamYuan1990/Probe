@@ -31,6 +31,7 @@ router.get('/run', function(req, res, next) {
   var d = new Date();
   var status = 0;
   libs.init();
+  console.log(req.query);
   CmdInfo = {
       Chaincode:'sample',
       Path: req.query.Path,
@@ -41,40 +42,31 @@ router.get('/run', function(req, res, next) {
       tapeCount: parseFloat(req.query.TapeCount),
   }
   if (req.query.TapeCLI) {
-    console.log(req.query.TapeCLI);
     CmdInfo.TapeCLI = req.query.TapeCLI;
   }
   BatchTimeout = [];
-  console.log(req.query.BatchTimeout);
   BatchTimeoutArray = req.query.BatchTimeout.toString().split(",");
   BatchTimeoutArray.forEach(element => {
     BatchTimeout.push(parseFloat(element));
   });
-  console.log(BatchTimeout);
   //
   MaxMessageCount = [];
-  console.log(req.query.MaxMessageCount);
   MaxMessageCountArray = req.query.MaxMessageCount.toString().split(",");
   MaxMessageCountArray.forEach(element => {
     MaxMessageCount.push(parseFloat(element));
   });
-  console.log(MaxMessageCount);
   //
   AbsoluteMaxBytes = [];
-  console.log(req.query.AbsoluteMaxBytes);
   AbsoluteMaxBytesArray = req.query.AbsoluteMaxBytes.toString().split(",");
   AbsoluteMaxBytesArray.forEach(element => {
     AbsoluteMaxBytes.push(parseFloat(element));
   });
-  console.log(AbsoluteMaxBytes);
   //
   PreferredMaxBytes = [];
-  console.log(req.query.PreferredMaxBytes);
   PreferredMaxBytesArray = req.query.PreferredMaxBytes.toString().split(",");
   PreferredMaxBytesArray.forEach(element => {
     PreferredMaxBytes.push(parseFloat(element));
   });
-  console.log(PreferredMaxBytes);
   status = libs.run(CmdInfo,BatchTimeout,MaxMessageCount,AbsoluteMaxBytes,PreferredMaxBytes);
   if (status == 0) {
     console.log(new Date().toString());
