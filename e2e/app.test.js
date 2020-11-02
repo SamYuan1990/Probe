@@ -12,10 +12,14 @@ describe('# test app.js', function () {
             .get('/api')
             .expect(200, done)
     });
-    it('GET /api/run', function (done) {
-        //http://localhost:3000
+    it('GET /api/run dryrun', function (done) {
         request
-            .get(`/api/run?Path=.%2Ffabric-samples%2Ftest-network%2F&BatchTimeout=1%2C2&MaxMessageCount=10&AbsoluteMaxBytes=2&PreferredMaxBytes=4&CoolDown=5&PrepareCLI=.%2FprepareConfig.sh&StartCLI=.%2Fnetwork.sh&TapeCount=5000&ShutDownCLI=.%2Fnetwork.sh`)
+            .get(`/api/run?Path=.%2Ffabric-samples%2Ftest-network%2F&BatchTimeout=1%2C2&MaxMessageCount=10&AbsoluteMaxBytes=3&PreferredMaxBytes=4&CoolDown=5&PrepareCLI=.%2FprepareConfig.sh&StartCLI=.%2Fnetwork.sh&CCDeployCLI=.%2Fnetwork.sh&TapeCount=5000&ShutDownCLI=.%2Fnetwork.sh&DryRun=true`)
+            .expect(200, done)
+    });
+    it('GET /api/run', function (done) {
+        request
+            .get(`/api/run?Path=.%2Ffabric-samples%2Ftest-network%2F&BatchTimeout=1%2C2&MaxMessageCount=10&AbsoluteMaxBytes=3&PreferredMaxBytes=4&CoolDown=5&PrepareCLI=.%2FprepareConfig.sh&StartCLI=.%2Fnetwork.sh&CCDeployCLI=.%2Fnetwork.sh&TapeCount=5000&ShutDownCLI=.%2Fnetwork.sh`)
             .expect(200, done)
     });
     it('GET /api/getBatchTimeout', function (done) {

@@ -14,7 +14,7 @@ describe('# test app.js', function () {
     });
     it('GET /api/run', function (done) {
         request
-            .get(`/api/run?BatchTimeout=1&MaxMessageCount=1&AbsoluteMaxBytes=1&PreferredMaxBytes=1&CoolDown=1&PrepareCLI=echo&StartCLI=echo&TapeCLI=echo&TapeCount=5000&ShutDownCLI=echo`)
+            .get(`/api/run?Path=.%2Ffabric-samples%2Ftest-network%2F&BatchTimeout=1%2C2&MaxMessageCount=10&AbsoluteMaxBytes=3&PreferredMaxBytes=4&CoolDown=5&PrepareCLI=.%2FprepareConfig.sh&StartCLI=.%2Fnetwork.sh&CCDeployCLI=.%2Fnetwork.sh&TapeCount=5000&ShutDownCLI=.%2Fnetwork.sh&DryRun=true`)
             .expect(200, done)
     });
     it('GET /api/getBatchTimeout', function (done) {

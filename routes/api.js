@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var libs = require('../lib/libs');
+var fileIO = require('../lib/fileIO');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -8,29 +9,37 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/getBatchTimeout', function(req, res, next) {
-  res.send(libs.loadRs(libs.BatchTimeout));
+  res.send(fileIO.loadRs(fileIO.BatchTimeout));
 });
 
 router.get('/getMaxMessageCount', function(req, res, next) {
-  res.send(libs.loadRs(libs.MaxMessageCount));
+  res.send(fileIO.loadRs(fileIO.MaxMessageCount));
 });
 
 router.get('/getAbsoluteMaxBytes', function(req, res, next) {
-  res.send(libs.loadRs(libs.AbsoluteMaxBytes));
+  res.send(fileIO.loadRs(fileIO.AbsoluteMaxBytes));
 });
 
 router.get('/getPreferredMaxBytes', function(req, res, next) {
-  res.send(libs.loadRs(libs.PreferredMaxBytes));
+  res.send(fileIO.loadRs(fileIO.PreferredMaxBytes));
 });
 
 router.get('/getTPS', function(req, res, next) {
-  res.send(libs.loadRs(libs.TPS));
+  res.send(fileIO.loadRs(fileIO.TPS));
 });
 
+function prepareArray(input){
+  array = input.toString().split(",");
+  data = [];
+  array.forEach(element => {
+    data.push(parseFloat(element));
+  });
+  return data;
+}
+
 router.get('/run', function(req, res, next) {
-  var d = new Date();
   var status = 0;
-  libs.init();
+  fileIO.init();
   console.log(req.query);
   CmdInfo = {
       Chaincode:'sample',
@@ -38,36 +47,21 @@ router.get('/run', function(req, res, next) {
       CoolDown: parseFloat(req.query.CoolDown),
       PrepareCLI: req.query.PrepareCLI,
       StartCLI: req.query.StartCLI,
+      CCDeployCLI: req.query.CCDeployCLI,
       ShutDownCLI: req.query.ShutDownCLI,
       tapeCount: parseFloat(req.query.TapeCount),
+      DryRun: false,
   }
-  if (req.query.TapeCLI) {
-    CmdInfo.TapeCLI = req.query.TapeCLI;
+  if (req.query.DryRun) {
+    CmdInfo.DryRun = req.query.DryRun;
   }
-  BatchTimeout = [];
-  BatchTimeoutArray = req.query.BatchTimeout.toString().split(",");
-  BatchTimeoutArray.forEach(element => {
-    BatchTimeout.push(parseFloat(element));
-  });
-  //
-  MaxMessageCount = [];
-  MaxMessageCountArray = req.query.MaxMessageCount.toString().split(",");
-  MaxMessageCountArray.forEach(element => {
-    MaxMessageCount.push(parseFloat(element));
-  });
-  //
-  AbsoluteMaxBytes = [];
-  AbsoluteMaxBytesArray = req.query.AbsoluteMaxBytes.toString().split(",");
-  AbsoluteMaxBytesArray.forEach(element => {
-    AbsoluteMaxBytes.push(parseFloat(element));
-  });
-  //
-  PreferredMaxBytes = [];
-  PreferredMaxBytesArray = req.query.PreferredMaxBytes.toString().split(",");
-  PreferredMaxBytesArray.forEach(element => {
-    PreferredMaxBytes.push(parseFloat(element));
-  });
-  status = libs.run(CmdInfo,BatchTimeout,MaxMessageCount,AbsoluteMaxBytes,PreferredMaxBytes);
+  var BatchTimeout = prepareArray(req.query.BatchTimeout);  
+  var MaxMessageCount = prepareArray(req.query.MaxMessageCount);  
+  var AbsoluteMaxBytes = prepareArray(req.query.AbsoluteMaxBytes);  
+  var PreferredMaxBytes = prepareArray(req.query.PreferredMaxBytes);
+  var d = new Date();
+  console.log('process start');
+  status = libs.Run(CmdInfo,BatchTimeout,MaxMessageCount,AbsoluteMaxBytes,PreferredMaxBytes);
   if (status == 0) {
     console.log(new Date().toString());
     res.send(d.toString()+' success at '+new Date().toString());
