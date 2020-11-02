@@ -29,6 +29,7 @@ router.get('/getTPS', function(req, res, next) {
 
 router.get('/run', function(req, res, next) {
   var d = new Date();
+  var status = 0;
   libs.init();
   CmdInfo = {
       Chaincode:'sample',
@@ -36,8 +37,12 @@ router.get('/run', function(req, res, next) {
       CoolDown: parseFloat(req.query.CoolDown),
       PrepareCLI: req.query.PrepareCLI,
       StartCLI: req.query.StartCLI,
-      TapeCLI: req.query.TapeCLI,
       ShutDownCLI: req.query.ShutDownCLI,
+      tapeCount: parseFloat(req.query.TapeCount),
+  }
+  if (req.query.TapeCLI) {
+    console.log(req.query.TapeCLI);
+    CmdInfo.TapeCLI = req.query.TapeCLI;
   }
   BatchTimeout = [];
   console.log(req.query.BatchTimeout);
@@ -70,9 +75,14 @@ router.get('/run', function(req, res, next) {
     PreferredMaxBytes.push(parseFloat(element));
   });
   console.log(PreferredMaxBytes);
-  libs.run(CmdInfo,BatchTimeout,MaxMessageCount,AbsoluteMaxBytes,PreferredMaxBytes);
-  console.log(new Date().toString());
-  res.send(d.toString()+' success at '+new Date().toString());
+  status = libs.run(CmdInfo,BatchTimeout,MaxMessageCount,AbsoluteMaxBytes,PreferredMaxBytes);
+  if (status == 0) {
+    console.log(new Date().toString());
+    res.send(d.toString()+' success at '+new Date().toString());
+  } else {
+    console.log('error');
+    res.sendStatus(500);
+  }
 });
 
 module.exports = router;

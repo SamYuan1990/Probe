@@ -15,7 +15,7 @@ describe('# test app.js', function () {
     it('GET /api/run', function (done) {
         request
             .get(`/api/run?BatchTimeout=1&MaxMessageCount=1&AbsoluteMaxBytes=1&PreferredMaxBytes=1&
-            CoolDown=1&PrepareCLI=echo&StartCLI=echo&TapeCLI=echo&ShutDownCLI=echo`)
+            CoolDown=1&PrepareCLI=echo&StartCLI=echo&TapeCLI=echo&TapeCount=5000&ShutDownCLI=echo`)
             .expect(200, done)
     });
     it('GET /api/getBatchTimeout', function (done) {

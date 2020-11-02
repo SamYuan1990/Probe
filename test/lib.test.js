@@ -18,39 +18,7 @@ describe('# libs', function () {
         expect(true).to.deep.equal(libs.run(CmdInfo,BatchTimeout,MaxMessageCount,AbsoluteMaxBytes,PreferredMaxBytes)===0);
         done();
     })
-/*
-    it('start', function(done){
-        var TurnInfo = {
-            Chaincode:'sample',
-            BatchTimeout:2,
-            MaxMessageCount:200,
-            AbsoluteMaxBytes:2,
-            PreferredMaxBytes:2,
-          }
-        var startup = '/minifab';
-        rs = libs.startup(startup,TurnInfo);
-        expect(true).to.deep.equal(parseFloat(rs) === 0);
-        done();
-    });
 
-    it('tapeTPS', function(done){
-        var CmdInfo = {
-            tapeConfig:'1',
-            tapeCount:'1'
-        }
-        tapeCmd = 'docker'
-        rs = libs.tapeTPS(CmdInfo,tapeCmd);
-        expect(true).to.deep.equal(parseFloat(rs)>0);
-        done();
-    })
-
-    it('tear down', function(done){
-        var teardown = '/minifab';
-        rs = libs.teardown(teardown);
-        expect(true).to.deep.equal(parseFloat(rs) === 0);
-        done();
-    });
-*/
     it('appendRS', function(done){
         libs.init();
         libs.appendRS('sample,0.75,10,2,256, 180.038278,');
