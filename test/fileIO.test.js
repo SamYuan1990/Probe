@@ -1,8 +1,8 @@
 const fileIO = require('../lib/fileIO');
-var expect = require('chai').expect;
+const expect = require('chai').expect;
 
 describe('# fileIO', function () {
-    it('appendRS', function(done){
+    it('appendRS', function(done) {
         fileIO.init();
         fileIO.appendRS('sample,0.75,10,2,256, 180.038278,');
         fileIO.appendRS('sample,0.75,40,2,256, 291.310916,');
@@ -21,28 +21,28 @@ describe('# fileIO', function () {
         fileIO.appendRS('sample,1.5,80,2,256, 348.150198,');
         fileIO.appendRS('sample,1.5,120,2,256, 310.915616,');
         done();
-    })
+    });
 
     it('get BatchTimeout', function (done) {
-        expect([0.75,0.75,0.75,0.75,1,1,1,1,2,2,2,2,1.5,1.5,1.5,1.5]).to.deep.equal(
+        expect([0.75, 0.75, 0.75, 0.75, 1, 1, 1, 1, 2, 2, 2, 2, 1.5, 1.5, 1.5, 1.5]).to.deep.equal(
             fileIO.loadRs(fileIO.BatchTimeout));
         done();
-    })
+    });
     it('get MaxMessageCount', function (done) {
-        expect([10,40,80,120,10,40,80,120,10,40,80,120,10,40,80,120]).to.deep.equal(
+        expect([10, 40, 80, 120, 10, 40, 80, 120, 10, 40, 80, 120, 10, 40, 80, 120]).to.deep.equal(
             fileIO.loadRs(fileIO.MaxMessageCount));
         done();
-    })
+    });
     it('get AbsoluteMaxBytes', function (done) {
-        expect([2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]).to.deep.equal(
+        expect([2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]).to.deep.equal(
             fileIO.loadRs(fileIO.AbsoluteMaxBytes));
         done();
-    })
+    });
     it('get PreferredMaxBytes', function (done) {
-        expect([256,256,256,256,256,256,256,256,256,256,256,256,256,256,256,256]).to.deep.equal(
+        expect([256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256]).to.deep.equal(
             fileIO.loadRs(fileIO.PreferredMaxBytes));
         done();
-    })
+    });
     it('get TPS', function (done) {
         expect([180.038278,
             291.310916,
@@ -62,5 +62,5 @@ describe('# fileIO', function () {
             310.915616]).to.deep.equal(
             fileIO.loadRs(fileIO.TPS));
         done();
-    })
-})
+    });
+});
