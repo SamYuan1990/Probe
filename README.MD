@@ -52,3 +52,11 @@ You are able to know better with how your changes impacts Fabric TPS in over all
 5. npm start
 6. access localhost:3000, submit form with placeholder
 6. access localhost:3000/result
+
+## Version Plan
+version | define| feature
+---|---|---
+0.0.0 | MVP| support test network an
+0.0.1 | UI enhance | add such as react as UI refactor
+0.0.2 | back end refactor | may support other type fabric network starter, may adding caliper support
+1.0.0 | fix up bugs after 0.0.2 | 

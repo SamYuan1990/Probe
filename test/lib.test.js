@@ -3,7 +3,7 @@ var expect = require('chai').expect;
 
 describe('# libs', function () {
     context('run', function(){
-        it('run', function(done){
+        it('run success', function(done){
             CmdInfo = {
                 Chaincode:'sample',
                 CoolDown: 1,
@@ -47,7 +47,7 @@ describe('# libs', function () {
             rs = {
                 DryRun: true,
             }
-            expect(0).to.be.equals(libs.executeCommand(command));
+            expect(0).to.be.equals(libs.executeCommand(rs));
             done();
         })
 
@@ -59,7 +59,30 @@ describe('# libs', function () {
                 args: ['a'],
                 Path: './s'
             }
-            expect(0).to.be.equals(libs.executeCommand(command));
+            expect(0).to.be.equals(libs.executeCommand(rs));
+            done();
+        })
+
+        it('should success if dry run', function(done){
+            rs = {
+                DryRun: false,
+                info: 'echo',
+                command: 'echo',
+                args: ['tx:500,duration:1.356275407s,tps:100'],
+                tps: true,
+                Path: './s'
+            }
+            expect('100').to.be.equals(libs.executeCommand(rs));
+            done();
+        })
+    })
+
+    context('TapeTpsFilter', function(){
+        it('should work', function(done){
+            rs = {
+                output: 'tx: 500, duration: 1.356275407s, tps: 100\n'
+            }
+            expect(' 100').to.be.equals(libs.TapeTpsFilter(rs));
             done();
         })
     })
