@@ -25,6 +25,8 @@ jobs:
 
   - job: e2e
     displayName: e2eSample
+    dependsOn:
+    - ut
     steps:
        - script: npm install
          displayName: npmInstall
