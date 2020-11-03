@@ -19,11 +19,14 @@ jobs:
       displayName: 'Install Node.js'
     - script: |
         npm install
+        npm run lint
         npm test
       displayName: 'npm install and test'
 
   - job: e2e
     displayName: e2eSample
+    dependsOn:
+    - ut
     steps:
        - script: npm install
          displayName: npmInstall

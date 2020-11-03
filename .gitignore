@@ -3,3 +3,8 @@ vars
 spec.yaml
 minifabric
 fabric-samples
+coverage
+.nyc_output
+.vscode
+nohup.out
+log.txt
