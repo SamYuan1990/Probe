@@ -8,3 +8,4 @@ coverage
 .vscode
 nohup.out
 log.txt
+logger.log
