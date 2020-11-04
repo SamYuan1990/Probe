@@ -3,7 +3,7 @@
 
 ## What is Probe
 ![probe define](probe.png)
-Probe is a web GUI application with for Hyperledger Fabric mantianer, user, research to find the best block config logic for my chaincode.
+Probe is a web GUI application with for Hyperledger Fabric mantianer, user, research to find the best block config logic for specific chaincode and fabric network.
 
 - Probe provides loop test control for given block parameter arrays.
 - Probe provides sample chaincode for some test cases.
@@ -22,10 +22,11 @@ for each graph from output, label as below
 | AbsoluteMaxBytes  | PreferredMaxBytes     | tps     | 
 
 ## Why Probe
-As TWGC performance work group, we found out that different block parameters, networks, chaicndoe language and chaincode logic having influence final TPS.
+As discussed with TWGC performance work group, we found out that different block parameters, networks, chaicndoe language and chaincode logic having influence final TPS.
+To answer, the best parameter for specific fabric network and fabric chaincode, I create this project.
 
 ### For Fabric user
-You are able to have better understanding with performance for your chaincode logic by:
+You are able to have better understanding with performance for specific chaincode logic by:
 1. Perpare probe for your test env.
 2. Start probe with parameters.
 3. Once ompleted, you will get the TPS rates with block parameters in GUI as above.
