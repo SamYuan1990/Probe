@@ -22,7 +22,7 @@ for each graph from output, label as below
 | AbsoluteMaxBytes  | PreferredMaxBytes     | tps     | 
 
 ## Why Probe
-As discussed with TWGC performance work group, we found out that different block parameters, networks, chaicndoe language and chaincode logic having influence final TPS.
+As discussed with TWGC performance work group, we found out that different block parameters, networks, chaincode language and chaincode logic having influence final TPS.
 To answer, the best parameter for specific fabric network and fabric chaincode, I create this project.
 
 ### For Fabric user
