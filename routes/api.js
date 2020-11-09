@@ -44,7 +44,7 @@ function prepareArray(input) {
 
 router.get('/run', function(req, res, next) {
     res.send('process start at ' + new Date().toString() + ' go to /result to see result');
-    fs.writeFileSync(lockFile, 123);
+    fs.writeFileSync(lockFile, '123');
     fileIO.init();
     logger.info(req.query);
     const CmdInfo = {
