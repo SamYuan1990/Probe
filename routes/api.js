@@ -13,24 +13,9 @@ router.get('/', function(req, res, next) {
     res.send('respond with a resource');
 });
 
-router.get('/getBatchTimeout', function(req, res, next) {
-    res.send(fileIO.loadRs(fileIO.BatchTimeout));
-});
-
-router.get('/getMaxMessageCount', function(req, res, next) {
-    res.send(fileIO.loadRs(fileIO.MaxMessageCount));
-});
-
-router.get('/getAbsoluteMaxBytes', function(req, res, next) {
-    res.send(fileIO.loadRs(fileIO.AbsoluteMaxBytes));
-});
-
-router.get('/getPreferredMaxBytes', function(req, res, next) {
-    res.send(fileIO.loadRs(fileIO.PreferredMaxBytes));
-});
-
-router.get('/getTPS', function(req, res, next) {
-    res.send(fileIO.loadRs(fileIO.TPS));
+// get?data=?&orderby=?
+router.get('/get', function(req, res, next) {
+    res.send(fileIO.loadRs(req.query.data));
 });
 
 function prepareArray(input) {
