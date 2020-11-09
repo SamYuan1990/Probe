@@ -11,40 +11,8 @@
     <h1>
         welcome, here is probe
     </h1>
-</div>    
-<div class="pure-g">
-    <div class="pure-u-1-2 pure-u-md-1-2">
-        <p>Input</p>
-        <form action="./api/run">
-            Path: <input type="text" name="Path" placeholder="./fabric-samples/test-network/"><br>
-            BatchTimeout: <input type="text" name="BatchTimeout" placeholder="1,2"><br>
-            MaxMessageCount: <input type="text" name="MaxMessageCount" placeholder="10"><br>
-            AbsoluteMaxBytes: <input type="text" name="AbsoluteMaxBytes" placeholder="2"><br>
-            PreferredMaxBytes: <input type="text" name="PreferredMaxBytes" placeholder="4"><br>
-            CoolDown: <input type="text" name="CoolDown" placeholder="5"><br>
-            PrepareCLI: <input type="text" name="PrepareCLI" placeholder="./prepareConfig.sh"><br>
-            StartCLI: <input type="text" name="StartCLI" placeholder="./network.sh"><br>
-            CCDeployCLI: <input type="text" name="CCDeployCLI" placeholder="./network.sh"><br>
-            TapeCount: <input type="text" name="TapeCount" placeholder="5000"><br>
-            ShutDownCLI: <input type="text" name="ShutDownCLI" placeholder="./network.sh"><br>
-            <input type="submit" value="submit">
-            </form>
-    </div>
-    <div class="pure-u-1-2 pure-u-md-1-2">
-            <p>Sample base on placeholder</p>
-            <p>for BatchTimeout 1,2</p>
-            <p>for MaxMessageCount 10</p>
-            <p>for AbsoluteMaxBytes 2</p>
-            <p>for PreferredMaxBytes 4</p>
-            <p>${probedir}./fabric-samples/test-network/prepareConfig.sh $BatchTimeout $MaxMessageCount $AbsoluteMaxBytes $PreferredMaxBytes</p>
-            <p>${probedir}./fabric-samples/test-network/network.sh up createChannel -i 2.2</p>
-            <p>${probedir}./fabric-samples/test-network/network.sh deployCC -d $BatchTimeout</p>
-            <p>sleep 5</p>
-            <p>docker run --name tape -e TAPE_LOGLEVEL=debug --network host -v ${probedir}:/config guoger/tape tape /config/config.yaml $TapeCount</p>
-            <p>docker rm tape</p>
-            <p>${probedir}./fabric-samples/test-network/network.sh down</p>
-            <p>sleep 5</p>
-    </div>
-</div>
+</div>   
+<div id="root"></div>
+<script type="text/javascript" src="./javascripts/bundle.js"></script>
 </body>
 </html>

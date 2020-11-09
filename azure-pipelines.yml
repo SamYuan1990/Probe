@@ -36,6 +36,5 @@ jobs:
          displayName: downloadTape
        - script: cp sample/prepareConfig.sh fabric-samples/test-network
          displayName: cpPrepareConfig
-       - script: nohup npm run e2e
-         displayName: startProbe
-       
+       - script: npm run e2e
+         displayName: startEnd2EndTest
