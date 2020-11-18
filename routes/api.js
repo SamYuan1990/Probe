@@ -15,7 +15,11 @@ router.get('/', function(req, res, next) {
 
 // get?data=?&orderby=?
 router.get('/get', function(req, res, next) {
-    res.send(fileIO.loadRs(req.query.data));
+    if (!req.query.orderby) {
+        res.send(fileIO.loadRs(req.query.data));
+    } else {
+        res.send(fileIO.loadRs(req.query.data, req.query.orderby));
+    }
 });
 
 function prepareArray(input) {
