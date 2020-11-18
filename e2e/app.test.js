@@ -47,9 +47,24 @@ describe('# test app.js', function () {
             .get('/api/get?data=TPS')
             .expect(200, done);
     });
-    it('GET / 200 result', function (done) {
+    it('GET / 200 resultBatchTimeout', function (done) {
         request
-            .get('/result')
+            .get('/result/BatchTimeout')
+            .expect(200, done);
+    });
+    it('GET / 200 resultMaxMessageCount', function (done) {
+        request
+            .get('/result/MaxMessageCount')
+            .expect(200, done);
+    });
+    it('GET / 200 resultAbsoluteMaxBytes', function (done) {
+        request
+            .get('/result/AbsoluteMaxBytes')
+            .expect(200, done);
+    });
+    it('GET / 200 resultPreferredMaxBytes', function (done) {
+        request
+            .get('/result/PreferredMaxBytes')
             .expect(200, done);
     });
 });
