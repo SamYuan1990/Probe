@@ -52,12 +52,15 @@ You are able to know better with how your changes impacts Fabric TPS in over all
 4. apply the bridge file to adjust block parameters for test network `cp sample/prepareConfig.sh fabric-samples/test-network`
 5. npm start
 6. access localhost:3000, submit form with placeholder
-6. access localhost:3000/result
+7. access localhost:3000/result/BatchTimeout
+8. access localhost:3000/result/MaxMessageCount
+9. access localhost:3000/result/AbsoluteMaxBytes
+10. access localhost:3000/result/PreferredMaxBytes
 
 ## Version Plan
 version | define| feature
 ---|---|---
-0.0.0 | MVP| support test network an
+0.0.0 | MVP| support test network
 0.0.1 | UI enhance | add such as react as UI refactor
 0.0.2 | back end refactor | may support other type fabric network starter, may adding caliper support
 1.0.0 | fix up bugs after 0.0.2 | 
