@@ -56,6 +56,12 @@ describe('# test app.js', function () {
             .get('/api/get?data=TPS')
             .expect(200, done);
     });
+
+    it('GET /api/getTPS', function (done) {
+        request
+            .get('/api/get?data=TPS&orderby=BatchTimeout')
+            .expect(200, done);
+    });
     it('GET / 200 result', function (done) {
         request
             .get('/result')

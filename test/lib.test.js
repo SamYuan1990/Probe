@@ -63,6 +63,19 @@ describe('# libs', function () {
             done();
         });
 
+        it('error handle', function(done) {
+            const rs = {
+                DryRun: false,
+                info: 'echo',
+                command: 'exit',
+                tps: true,
+                args: ['1'],
+                Path: './s'
+            };
+            expect(-1).to.be.equals(libs.executeCommand(rs));
+            done();
+        });
+
         it('should success if dry run', function(done) {
             const rs = {
                 DryRun: false,

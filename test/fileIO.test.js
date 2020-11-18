@@ -4,63 +4,52 @@ const expect = require('chai').expect;
 describe('# fileIO', function () {
     it('appendRS', function(done) {
         fileIO.init();
-        fileIO.appendRS('sample,0.75,10,2,256, 180.038278,');
-        fileIO.appendRS('sample,0.75,40,2,256, 291.310916,');
-        fileIO.appendRS('sample,0.75,80,2,256, 333.041573,');
-        fileIO.appendRS('sample,0.75,120,2,256, 351.752320,');
-        fileIO.appendRS('sample,1,10,2,256, 172.872861,');
-        fileIO.appendRS('sample,1,40,2,256, 291.617799,');
-        fileIO.appendRS('sample,1,80,2,256, 337.826232,');
-        fileIO.appendRS('sample,1,120,2,256, 319.039588,');
-        fileIO.appendRS('sample,2,10,2,256, 182.105577,');
-        fileIO.appendRS('sample,2,40,2,256, 260.276446,');
-        fileIO.appendRS('sample,2,80,2,256, 323.542760,');
-        fileIO.appendRS('sample,2,120,2,256, 323.526945,');
-        fileIO.appendRS('sample,1.5,10,2,256, 172.745382,');
-        fileIO.appendRS('sample,1.5,40,2,256, 268.041591,');
-        fileIO.appendRS('sample,1.5,80,2,256, 348.150198,');
-        fileIO.appendRS('sample,1.5,120,2,256, 310.915616,');
+        fileIO.appendRS('sample,1,10,2,256, 110,');
+        fileIO.appendRS('sample,2,10,2,256, 210,');
+        fileIO.appendRS('sample,4,10,2,256, 410,');
+        fileIO.appendRS('sample,8,10,2,256, 810,');
+        fileIO.appendRS('sample,1,20,2,256, 120,');
+        fileIO.appendRS('sample,2,20,2,256, 220,');
+        fileIO.appendRS('sample,4,20,2,256, 420,');
+        fileIO.appendRS('sample,8,20,2,256, 820,');
         done();
     });
 
     it('get BatchTimeout', function (done) {
-        expect([0.75, 0.75, 0.75, 0.75, 1, 1, 1, 1, 2, 2, 2, 2, 1.5, 1.5, 1.5, 1.5]).to.deep.equal(
+        expect([1, 2, 4, 8, 1, 2, 4, 8]).to.deep.equal(
             fileIO.loadRs(fileIO.BatchTimeout));
         done();
     });
     it('get MaxMessageCount', function (done) {
-        expect([10, 40, 80, 120, 10, 40, 80, 120, 10, 40, 80, 120, 10, 40, 80, 120]).to.deep.equal(
+        expect([10, 10, 10, 10, 20, 20, 20, 20]).to.deep.equal(
             fileIO.loadRs(fileIO.MaxMessageCount));
         done();
     });
     it('get AbsoluteMaxBytes', function (done) {
-        expect([2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]).to.deep.equal(
+        expect([2, 2, 2, 2, 2, 2, 2, 2]).to.deep.equal(
             fileIO.loadRs(fileIO.AbsoluteMaxBytes));
         done();
     });
     it('get PreferredMaxBytes', function (done) {
-        expect([256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256]).to.deep.equal(
+        expect([256, 256, 256, 256, 256, 256, 256, 256]).to.deep.equal(
             fileIO.loadRs(fileIO.PreferredMaxBytes));
         done();
     });
     it('get TPS', function (done) {
-        expect([180.038278,
-            291.310916,
-            333.041573,
-            351.752320,
-            172.872861,
-            291.617799,
-            337.826232,
-            319.039588,
-            182.105577,
-            260.276446,
-            323.542760,
-            323.526945,
-            172.745382,
-            268.041591,
-            348.150198,
-            310.915616]).to.deep.equal(
+        expect([110, 210, 410, 810, 120, 220, 420, 820]).to.deep.equal(
             fileIO.loadRs(fileIO.TPS));
+        done();
+    });
+
+    it('get BatchTimeout order by BatchTimeout', function (done) {
+        expect([1, 1, 2, 2, 4, 4, 8, 8]).to.deep.equal(
+            fileIO.loadRs(fileIO.BatchTimeout, fileIO.BatchTimeout));
+        done();
+    });
+
+    it('get TPS order by BatchTimeout', function (done) {
+        expect([110, 120, 210, 220, 410, 420, 810, 820]).to.deep.equal(
+            fileIO.loadRs(fileIO.TPS, fileIO.BatchTimeout));
         done();
     });
 });
