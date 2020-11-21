@@ -1,9 +1,12 @@
 module.exports = {
-    entry: __dirname + '/src/App.jsx',
+    entry: {
+        index: [__dirname + '/src/index/App.jsx'],
+        sidebar: [__dirname + '/src/sidebar/App.jsx'],
+    },
     mode: 'production',
     output: {
         path: __dirname + '/public/javascripts',
-        filename: 'bundle.js'
+        filename: './[name]/bundle.js'
     },
     watch: true,
     module: {
