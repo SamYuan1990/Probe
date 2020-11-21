@@ -6,12 +6,12 @@
 trigger:
 - main
 
-pool:
-  vmImage: 'ubuntu-latest'
-
 jobs:
-  - job: ut
-    displayName: ut
+
+  - job: lint
+    displayName: lint
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
     - task: NodeTool@0
       inputs:
@@ -20,13 +20,36 @@ jobs:
     - script: |
         npm install
         npm run lint
+      displayName: 'npm install and lint'
+
+  - job: ut
+    strategy:
+      matrix:
+        linux:
+          imageName: 'ubuntu-latest'
+        mac:
+          imageName: 'macOS-latest'
+        windows:
+          imageName: 'windows-latest'
+    displayName: ut
+    pool:
+      vmImage: $(imageName)
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x'
+      displayName: 'Install Node.js'
+    - script: |
+        npm ci
         npm test
-      displayName: 'npm install and test'
+      displayName: 'npm ci'
 
   - job: e2e
     displayName: e2eSample
     dependsOn:
     - ut
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
        - script: npm install
          displayName: npmInstall
@@ -38,3 +61,16 @@ jobs:
          displayName: cpPrepareConfig
        - script: npm run e2e
          displayName: startEnd2EndTest
+
+  - job: releasePage
+    steps:
+      - task: GitHubRelease@1
+        inputs:
+          gitHubConnection: 'SamYuan1990 (5)'
+          repositoryName: '$(Build.Repository.Name)'
+          action: 'create'
+          target: '$(Build.SourceVersion)'
+          tagSource: 'gitTag'
+          tagPattern: 'v.*'
+          changeLogCompareToRelease: 'lastFullRelease'
+          changeLogType: 'commitBased'
