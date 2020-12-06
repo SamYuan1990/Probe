@@ -82,4 +82,21 @@ describe('# test app.js', function () {
             .get('/result/PreferredMaxBytes')
             .expect(200, done);
     });
+
+    it('GET /quick/config', function (done) {
+        request
+            .get('/quick/config')
+            .expect(200, done);
+    });
+    it('GET /quick/BatchTimeout dryrun', function (done) {
+        request
+            .get('/quick/BatchTimeout?DryRun=true')
+            .expect(302, done);
+    });
+
+    it('GET /quick/MaxMessageCount dryrun', function (done) {
+        request
+            .get('/quick/MaxMessageCount?DryRun=true')
+            .expect(302, done);
+    });
 });

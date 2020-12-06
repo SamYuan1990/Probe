@@ -67,4 +67,15 @@ describe('# test app.js', function () {
             .get('/result/PreferredMaxBytes')
             .expect(200, done);
     });
+    it('GET /quick/BatchTimeout', function (done) {
+        request
+            .get('/quick/BatchTimeout')
+            .expect(302, done);
+    });
+
+    it('GET /quick/MaxMessageCount', function (done) {
+        request
+            .get('/quick/MaxMessageCount')
+            .expect(302, done);
+    });
 });
