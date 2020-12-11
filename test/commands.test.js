@@ -25,7 +25,7 @@ describe('# commands', function () {
             expect(true).to.be.equals(cmd.tps);
             expect('docker').to.be.equals(cmd.command);
             expect('tape start').to.be.equals(cmd.info);
-            expect(CmdInfo.tapeCount).to.be.equals(cmd.args[12]);
+            expect(CmdInfo.tapeCount).to.be.equals(cmd.args[14]);
             done();
         });
     });
