@@ -1,0 +1,66 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+networks:
+  monitor:
+
+services:
+
+  cadvisor:
+    container_name: cadvisor
+    image:  google/cadvisor
+    ports:
+      - 8080:8080
+    volumes:
+      - /:/rootfs:ro 
+      - /var/run:/var/run:ro 
+      - /sys:/sys:ro 
+      - /var/lib/docker/:/var/lib/docker:ro 
+      - /dev/disk/:/dev/disk:ro 
+    networks:
+      - monitor  
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - monitor  
+
+  grafana:
+    container_name: grafana
+    image:   grafana/grafana
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./prometheus/grafana/grafana:/var/lib/grafana 
+      - ./prometheus/grafana/conf:/usr/share/grafana/conf
+    networks:
+      - monitor  
+
+  pushGateway:
+    image: prom/pushgateway
+    container_name: pushGateway
+    ports:
+      - "9091:9091"
+    networks:
+      - monitor  
+
+  nodeexporter:
+    container_name: nodeexporter
+    image: prom/node-exporter
+    ports:
+      - 9100:9100
+    volumes:
+      - /proc:/host/proc
+      - /sys:/host/sys
+      - /:/rootfs
+    networks:
+      - monitor

@@ -2,4 +2,9 @@
     <p>here are two steps to config your probe quickly</p>
     <p>curl -vsS https://raw.githubusercontent.com/hyperledger/fabric/release-2.2/scripts/bootstrap.sh | bash</p>
     <p>cp sample/prepareConfig.sh fabric-samples/test-network</p>
+    <p>to enable monitor</p>
+    <p>cp -f sample/docker-compose-test-net.yaml  fabric-samples/test-network/docker</p>
+    <p>cd monitor</p>
+    <p>docker-compose up -d</p>
+    <p>http://localhost:3001/ for grafana with admin/adminpw</p>
 </div>

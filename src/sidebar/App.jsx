@@ -76,13 +76,13 @@ class ProbeNav extends React.Component {
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="mr-auto">
-				<Nav.Link href="/">{i18n.t('move')}</Nav.Link>
 				<NavDropdown title={i18n.t('demo_header')}>
 					<NavDropdown.Item href="/quick/config">{i18n.t('demo_config')}</NavDropdown.Item>
 					<NavDropdown.Item href="/quick/BatchTimeout">{i18n.t('run_BatchTimeout')}</NavDropdown.Item>
 					<NavDropdown.Item href="/quick/MaxMessageCount">{i18n.t('run_MaxMessageCount')}</NavDropdown.Item>
 					<NavDropdown.Divider />
 				</NavDropdown>
+				<Nav.Link href="/">{i18n.t('move')}</Nav.Link>
 				<NavDropdown title={i18n.t('result_header')} id="basic-nav-dropdown">
 					<NavDropdown.Item href="/result/BatchTimeout">{i18n.t('resultBatchTimeout')}</NavDropdown.Item>
 					<NavDropdown.Item href="/result/MaxMessageCount">{i18n.t('resultMaxMessageCount')}</NavDropdown.Item>
