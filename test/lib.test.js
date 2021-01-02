@@ -33,9 +33,14 @@ describe('# libs', function () {
         });
 
         it('should handle error', function(done) {
+            class mockError {
+                toString(value) {
+                    return 'abc';
+                }
+            }
             const rs = {
                 status: 1,
-                stderr: 'abc',
+                stderr: new mockError()
             };
             expect(-1).to.be.equals(libs.handleStatus(rs));
             done();
