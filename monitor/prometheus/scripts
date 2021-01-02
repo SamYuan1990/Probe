@@ -1,0 +1,21 @@
+
+docker pull prom/node-exporter
+docker pull prom/prometheus
+docker pull grafana/grafana
+docker run -d -p 9100:9100 \
+  -v "/proc:/host/proc:ro" \
+  -v "/sys:/host/sys:ro" \
+  -v "/:/rootfs:ro" \
+  --net="host" \
+  prom/node-exporter
+
+docker run  -d \
+  -p 9090:9090 \
+  -v ./prometheus.yml:/etc/prometheus/prometheus.yml  \
+  prom/prometheus
+
+
+docker run -d \
+  -p 3000:3000 \
+  --name=grafana \
+  grafana/grafana

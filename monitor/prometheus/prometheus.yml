@@ -1,0 +1,40 @@
+global:
+  scrape_interval:     60s
+  evaluation_interval: 60s
+ 
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets: ['localhost:9090']
+        labels:
+          instance: prometheus
+
+  - job_name: pushGateway
+    static_configs:
+    - targets: ['pushGateway:9091']
+      labels:
+          instance: pushGateway
+
+  - job_name: containers
+    static_configs:
+      - targets: ['cadvisor:8080']
+        labels:
+          instance: cadvisor
+
+  - job_name: nodeexporter
+    static_configs:
+      - targets: ['nodeexporter:9100']
+        labels:
+          instance: nodeexporter
+
+  - job_name: orderer
+    static_configs:
+      - targets: ['orderer.example.com:8443']
+        labels:
+          instance: localhost
+
+  - job_name: peer
+    static_configs:
+      - targets: ['peer0.org1.example.com:9443']
+        labels:
+          instance: localhost

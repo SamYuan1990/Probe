@@ -16,7 +16,8 @@ class InputForm extends React.Component {
 			StartCLI:  './network.sh',
 			CCDeployCLI: './network.sh',
 			TapeCount: '5000',
-			ShutDownCLI: './network.sh'
+			ShutDownCLI: './network.sh',
+			Monitor: 'false'
 		};
 		this.changePath = this.changePath.bind(this);
 		this.changeBatchTimeout = this.changeBatchTimeout.bind(this);
@@ -29,6 +30,7 @@ class InputForm extends React.Component {
 		this.changeCCDeployCLI = this.changeCCDeployCLI.bind(this);
 		this.changeTapeCount = this.changeTapeCount.bind(this);
 		this.changeShutDownCLI = this.changeShutDownCLI.bind(this);
+		this.changeMonitor = this.changeMonitor.bind(this);
 	}
 
 	changePath(event){
@@ -92,6 +94,13 @@ class InputForm extends React.Component {
 		})
 	}
 
+	changeMonitor(event){
+		this.setState({
+			Monitor: event.target.value? event.target.value:'false'
+		})
+	}
+	
+
 	render () {
 		return (
             <div class="pure-g">
@@ -109,6 +118,7 @@ class InputForm extends React.Component {
 						CCDeployCLI: <input type="text" name="CCDeployCLI" placeholder="./network.sh" onChange={this.changeCCDeployCLI}/><br/>
 						TapeCount: <input type="text" name="TapeCount" placeholder="5000" onChange={this.changeTapeCount}/><br/>
 						ShutDownCLI: <input type="text" name="ShutDownCLI" placeholder="./network.sh" onChange={this.changeShutDownCLI}/><br/>
+						Monitor: <input type="text" name="Monitor" placeholder="false" onChange={this.changeMonitor}/><br/>
 						<input type="submit" value="submit"/>
 					</form>
 				</div>
@@ -119,10 +129,12 @@ class InputForm extends React.Component {
 					<p>for AbsoluteMaxBytes {this.state.AbsoluteMaxBytes}</p>
 					<p>for PreferredMaxBytes {this.state.PreferredMaxBytess}</p>
 					<p>$probedir{this.state.Path}/{this.state.PrepareCLI} $BatchTimeout $MaxMessageCount $AbsoluteMaxBytes $PreferredMaxBytes</p>
+					<p hidden={!this.state.Monitor=='true'}>docker network connect net_test prometheus</p>
 					<p>$probedir{this.state.Path}/{this.state.StartCLI} up createChannel -i 2.2</p>
 					<p>$probedir{this.state.Path}/{this.state.CCDeployCLI} deployCC -d $BatchTimeout</p>
 					<p>sleep {this.state.CoolDown}</p>
-					<p>docker run --name tape -e TAPE_LOGLEVEL=debug --network host -v $probedir:/config guoger/tape tape /config/config.yaml {this.state.TapeCount}</p>
+					<p>docker run --name tape -e TAPE_LOGLEVEL=debug --network host -v $probedir:/config guoger/tape tape -c /config/config.yaml -n {this.state.TapeCount}</p>
+					<p hidden={!this.state.Monitor=='true'}>docker network disconnect net_test prometheus</p>
 					<p>docker rm tape</p>
 					<p>$probedir{this.state.Path}/{this.state.ShutDownCLI} down</p>
 					<p>sleep {this.state.CoolDown}</p>

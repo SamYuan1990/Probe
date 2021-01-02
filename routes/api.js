@@ -36,6 +36,10 @@ router.get('/run', function(req, res, next) {
     fs.writeFileSync(lockFile, '123');
     fileIO.init();
     logger.info(req.query);
+    let monitor = false;
+    if (req.query.Monitor === 'true') {
+        monitor = true;
+    }
     const CmdInfo = {
         Chaincode:'sample',
         Path: req.query.Path,
@@ -46,6 +50,7 @@ router.get('/run', function(req, res, next) {
         ShutDownCLI: req.query.ShutDownCLI,
         tapeCount: parseFloat(req.query.TapeCount),
         DryRun: false,
+        Monitor: monitor,
     };
     if (req.query.DryRun) {
         CmdInfo.DryRun = req.query.DryRun;
