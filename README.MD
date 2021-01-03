@@ -5,7 +5,7 @@
 
 ## What is Probe
 ![probe define](probe.png)
-Probe is a web GUI application with for Hyperledger Fabric mantianer, user, research to find the best block config logic for specific chaincode and fabric network.
+[Probe](https://www.bilibili.com/video/BV1dV411y7oZ) is a web GUI application with for Hyperledger Fabric mantianer, user, research to find the best block config logic for specific chaincode and fabric network.
 
 - Probe provides loop test control for given block parameter arrays.
 - Probe provides sample chaincode for some test cases.
@@ -32,7 +32,7 @@ You are able to know better with how your changes impacts Fabric TPS in over all
 3. Once completed, you will well known how your changes impacts Fabric TPS.
 
 ## Probe is not
-- Real time time monitor, for real time tps monitor, pls use Prometheus.
+- Real time time monitor, for real time tps monitor, pls use Prometheus. (But Probe has demo for it with test network [here](https://www.bilibili.com/video/BV1x54y1x78Z))
 - Auto test framework for Fabric performance, as in probe, we will invoke as byfn or minifab for your network up/down/cleanup.
 - Performance test tool for Fabric, for this we using tape.
 - GUI for tape, tape focus on once off time performance testing.
