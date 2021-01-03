@@ -3,7 +3,7 @@
 
 ## Probe是什么
 ![probe define](probe.png)
-Probe是一个面向Hyperledger Fabric维护者，用户，研究者的web UI的应用程序，我们可以用它来观察Fabric出块参数对于Fabric网络TPS的影线。
+[Probe](https://www.bilibili.com/video/BV1dV411y7oZ)是一个面向Hyperledger Fabric维护者，用户，研究者的web UI的应用程序，我们可以用它来观察Fabric出块参数对于Fabric网络TPS的影线。
 
 - 提供循环测试控制。
 - 提供基于test-network的配置案例。
@@ -29,8 +29,8 @@ Probe是在[TWGC performance work group](https://github.com/Hyperledger-TWGC/fab
 1. 观察结果
 
 ## Probe不做什么
-- 实时监控，如需要，请参考配置Prometheus
-= 完整的自动测试框架，对于部署方式，目前依赖于test-network
+- 实时监控，如需要，请参考配置Prometheus(但是[Probe提供基于test-network的配置案例](https://www.bilibili.com/video/BV1x54y1x78Z))
+- 完整的自动测试框架，对于部署方式，目前依赖于test-network
 - 性能测试工具，对于性能测试本身，目前依赖与Tape
 - Tape的GUI版本
 
