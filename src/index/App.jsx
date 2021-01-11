@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 
 class InputForm extends React.Component {
 
@@ -31,6 +32,7 @@ class InputForm extends React.Component {
 		this.changeTapeCount = this.changeTapeCount.bind(this);
 		this.changeShutDownCLI = this.changeShutDownCLI.bind(this);
 		this.changeMonitor = this.changeMonitor.bind(this);
+		this.RUN =this.RUN.bind(this);
 	}
 
 	changePath(event){
@@ -100,13 +102,17 @@ class InputForm extends React.Component {
 		})
 	}
 	
+	RUN(event){
+		alert("send to back end as starting "+JSON.stringify(this.state));
+		$.post('/api/run',this.state)
+	}
 
 	render () {
 		return (
             <div class="pure-g">
 				<div class="pure-u-1-2 pure-u-md-1-2">
 					<p>Input</p>
-					<form action="./api/run">
+					<div>
 						Path: <input type="text" name="Path" placeholder="./fabric-samples/test-network" onChange={this.changePath} /><br/>
 						BatchTimeout: <input type="text" name="BatchTimeout" placeholder="1,2" onChange={this.changeBatchTimeout} /> <br/>
 						MaxMessageCount: <input type="text" name="MaxMessageCount" placeholder="10" onChange={this.changeMaxMessageCount} /><br/>
@@ -119,8 +125,8 @@ class InputForm extends React.Component {
 						TapeCount: <input type="text" name="TapeCount" placeholder="5000" onChange={this.changeTapeCount}/><br/>
 						ShutDownCLI: <input type="text" name="ShutDownCLI" placeholder="./network.sh" onChange={this.changeShutDownCLI}/><br/>
 						Monitor: <input type="text" name="Monitor" placeholder="false" onChange={this.changeMonitor}/><br/>
-						<input type="submit" value="submit"/>
-					</form>
+						<input type="submit" value="submit" onClick={this.RUN}/>
+					</div>
 				</div>
 				<div class="pure-u-1-2 pure-u-md-1-2">
 					<p>Sample base on placeholder</p>
