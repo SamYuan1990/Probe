@@ -23,42 +23,37 @@ router.get('/get', function(req, res, next) {
 });
 
 function prepareArray(input) {
-    const array = input.toString().split(',');
-    const data = [];
-    array.forEach(element => {
-        data.push(parseFloat(element));
-    });
-    return data;
+    return input.toString().split(',');
 }
 
-router.get('/run', function(req, res, next) {
+router.post('/run', function(req, res, next) {
     res.send('process start at ' + new Date().toString() + ' go to /result to see result');
     fs.writeFileSync(lockFile, '123');
     fileIO.init();
-    logger.info(req.query);
+    logger.info(req.body);
     let monitor = false;
-    if (req.query.Monitor === 'true') {
+    if (req.body.Monitor === 'true') {
         monitor = true;
     }
     const CmdInfo = {
         Chaincode:'sample',
-        Path: req.query.Path,
-        CoolDown: parseFloat(req.query.CoolDown),
-        PrepareCLI: req.query.PrepareCLI,
-        StartCLI: req.query.StartCLI,
-        CCDeployCLI: req.query.CCDeployCLI,
-        ShutDownCLI: req.query.ShutDownCLI,
-        tapeCount: parseFloat(req.query.TapeCount),
+        Path: req.body.Path,
+        CoolDown: parseFloat(req.body.CoolDown),
+        PrepareCLI: req.body.PrepareCLI,
+        StartCLI: req.body.StartCLI,
+        CCDeployCLI: req.body.CCDeployCLI,
+        ShutDownCLI: req.body.ShutDownCLI,
+        tapeCount: parseFloat(req.body.TapeCount),
         DryRun: false,
         Monitor: monitor,
     };
-    if (req.query.DryRun) {
-        CmdInfo.DryRun = req.query.DryRun;
+    if (req.body.DryRun) {
+        CmdInfo.DryRun = req.body.DryRun;
     }
-    const BatchTimeout = prepareArray(req.query.BatchTimeout);
-    const MaxMessageCount = prepareArray(req.query.MaxMessageCount);
-    const AbsoluteMaxBytes = prepareArray(req.query.AbsoluteMaxBytes);
-    const PreferredMaxBytes = prepareArray(req.query.PreferredMaxBytes);
+    const BatchTimeout = prepareArray(req.body.BatchTimeout);
+    const MaxMessageCount = prepareArray(req.body.MaxMessageCount);
+    const AbsoluteMaxBytes = prepareArray(req.body.AbsoluteMaxBytes);
+    const PreferredMaxBytes = prepareArray(req.body.PreferredMaxBytes);
     logger.info('process start');
     const status = libs.Run(CmdInfo, BatchTimeout, MaxMessageCount, AbsoluteMaxBytes, PreferredMaxBytes);
     logger.info(status);

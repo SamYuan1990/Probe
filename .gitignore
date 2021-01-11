@@ -2,7 +2,7 @@ node_modules
 vars
 spec.yaml
 minifabric
-fabric-samples
+fabric-samples*
 coverage
 .nyc_output
 .vscode
