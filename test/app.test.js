@@ -106,6 +106,14 @@ describe('# test app.js', function () {
             .get('/quick/config')
             .expect(200, done);
     });
+
+    // http://localhost:3000/newUI
+
+    it('GET /newUI', function (done) {
+        request
+            .get('/newUI')
+            .expect(200, done);
+    });
     /* it('GET /quick/BatchTimeout dryrun', function (done) {
         request
             .get('/quick/BatchTimeout?DryRun=true')
