@@ -55,3 +55,15 @@ version | define| feature
 ---|---|---
 0.0.2 | back end refactor | may support other type fabric network starter, may adding caliper support
 1.0.0 | fix up bugs after 0.0.2 | 
+
+# How to contribute
+
+If your want to contribute Probe with new feature, bug fixing please create a new issue, of course with PR is best.
+
+Also welcome for documentatoin, learning course, etc.
+
+For development, please complete `Smaple guide with Fabric Sample` above.
+
+For Frontend, please use `npm run build`.
+
+For backend, please develop `--DryRun` as mock for unit test and adding real cases in CI

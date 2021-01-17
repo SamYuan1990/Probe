@@ -51,3 +51,15 @@ version | define| feature
 ---|---|---
 0.0.2 | back end refactor | may support other type fabric network starter, may adding caliper support
 1.0.0 | fix up bugs after 0.0.2 | 
+
+# 如何贡献
+
+如果您想为 Probe 添加新的特性，或者修复 bug，非常欢迎您在创建 issue，当然，如果能提交 PR 会更好。
+
+如果您希望贡献文档翻译，或者学习教程，也欢迎和我们联系。
+
+对于研发，请先参考`快速上手`完成环境配置。
+
+请使用`npm run build`来开发前台。
+
+请使用`--DryRun`来通过`mock`的方式开发后台功能，但是请把实际测试案例加入CI。
