@@ -14,6 +14,7 @@ class MyInput extends React.Component {
 		this.ShellType = this.ShellType.bind(this);
 		this.AddItem = this.AddItem.bind(this);
 		this.RemoveItem = this.RemoveItem.bind(this);
+		this.onChange = this.onChange.bind(this);
 	}
 
 	ShellType(event){
@@ -24,7 +25,6 @@ class MyInput extends React.Component {
 			})
 		)
 	}
-
 
 	TapeType(event){
 		this.props.dispatch(
@@ -53,6 +53,17 @@ class MyInput extends React.Component {
 		)
 	}
 
+	onChange(event){
+		this.props.dispatch(
+			({
+				type: 'CHANGE_ARG',
+				order: this.props.data.order,
+				index: event.target.getAttribute('label'),
+				value: event.target.value,
+			})
+		)
+	}
+
 	Debug(event){
 		alert("send to back end as starting "+JSON.stringify(this.props.data));
 	}
@@ -73,7 +84,7 @@ class MyInput extends React.Component {
 				<ListGroup.Item>{this.props.data.cmdType}</ListGroup.Item>
 				{
 					this.props.data.args.map((item, index) => 
-							<input type="text" key={index} placeholder={item}/> 
+							<input type="text" key={index} label={index} onChange={this.onChange} placeholder={item}/> 
 					) // 需要带上 key 属性 <li >{item}</li> <ListGroup.Item key={index}>{item}</ListGroup.Item>
       			}
 			  	</ListGroup>

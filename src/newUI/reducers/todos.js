@@ -44,6 +44,15 @@ const todos = (state = [{order:0, cmdType: 'Shell', args:['']}], action) => {
             }
             );
             return state;
+        case 'CHANGE_ARG': {
+            state.map(data => {
+                if (data.order === action.order) {
+                    data.args[action.index] = action.value;
+                }
+            }
+            );
+            return state;
+        }
         default:
             return state;
     }
