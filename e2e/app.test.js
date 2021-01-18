@@ -13,22 +13,6 @@ describe('# test app.js', function () {
             .expect(200, done);
     });
 
-    it('GET /api/run', function (done) {
-        request.post('/api/run').set('Content-Type', 'application/x-www-form-urlencoded').send(
-            {
-                Path: './fabric-samples/test-network/',
-                BatchTimeout:'1',
-                MaxMessageCount:'10',
-                AbsoluteMaxBytes:'3',
-                PreferredMaxBytes:'4',
-                CoolDown:'5',
-                PrepareCLI:'./prepareConfig.sh',
-                StartCLI:'./network.sh',
-                CCDeployCLI:'./network.sh',
-                TapeCount: '500',
-                ShutDownCLI: './network.sh'
-            }).expect(200, done);
-    });
     it('GET /api/getBatchTimeout', function (done) {
         request
             .get('/api/get?data=BatchTimeout')
@@ -74,15 +58,20 @@ describe('# test app.js', function () {
             .get('/result/PreferredMaxBytes')
             .expect(200, done);
     });
-    /* it('GET /quick/BatchTimeout', function (done) {
-        request
-            .get('/quick/BatchTimeout')
-            .expect(200, done);
+    it('GET /api/run', function (done) {
+        request.post('/api/run').set('Content-Type', 'application/x-www-form-urlencoded').send(
+            {
+                Path: './fabric-samples/test-network/',
+                BatchTimeout:'1',
+                MaxMessageCount:'10',
+                AbsoluteMaxBytes:'3',
+                PreferredMaxBytes:'4',
+                CoolDown:'5',
+                PrepareCLI:'./prepareConfig.sh',
+                StartCLI:'./network.sh',
+                CCDeployCLI:'./network.sh',
+                TapeCount: '500',
+                ShutDownCLI: './network.sh'
+            }).expect(200, done);
     });
-
-    it('GET /quick/MaxMessageCount', function (done) {
-        request
-            .get('/quick/MaxMessageCount')
-            .expect(200, done);
-    });*/
 });

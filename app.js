@@ -15,12 +15,15 @@ const newUIRouter = require('./routes/newUI');
 const app = express();
 const log4js = require('log4js');
 
-log4js.configure({
+/*log4js.configure({
     appenders: {app: {type: 'file', filename: 'logger.log'}},
     categories: {default: {appenders: ['app'], level: 'info'}}
-});
+});*/
 
-const logger = log4js.getLogger('app');
+const logger = log4js.getLogger();
+logger.level = "debug";
+//logger.debug("Some debug messages");
+//const logger = log4js.getLogger('app');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', ejs.__express);
