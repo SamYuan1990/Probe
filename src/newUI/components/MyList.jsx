@@ -47,7 +47,7 @@ export default class MyList extends React.Component {
 	render () {
 		return (
 			<div>
-			<Card className="text-center">
+			<Card>
 			<Card.Header>Input Your Commands</Card.Header>
 			<Card.Body>
 			<ListGroup variant="flush">
