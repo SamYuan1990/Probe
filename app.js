@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index');
 const resultRouter = require('./routes/result');
 const apiRouter = require('./routes/api');
 const quickRouter = require('./routes/quick');
+const newUIRouter = require('./routes/newUI');
 
 const app = express();
 const log4js = require('log4js');
@@ -18,6 +19,9 @@ log4js.configure({
     appenders: {app: {type: 'file', filename: 'logger.log'}},
     categories: {default: {appenders: ['app'], level: 'info'}}
 });
+
+//const logger = log4js.getLogger();
+//logger.level = "debug";
 
 const logger = log4js.getLogger('app');
 // view engine setup
@@ -37,6 +41,7 @@ app.use('/', indexRouter);
 app.use('/result', resultRouter);
 app.use('/api', apiRouter);
 app.use('/quick', quickRouter);
+app.use('/newUI', newUIRouter);
 
 
 // catch 404 and forward to error handler

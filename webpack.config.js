@@ -2,6 +2,7 @@ module.exports = {
     entry: {
         index: [__dirname + '/src/index/App.jsx'],
         sidebar: [__dirname + '/src/sidebar/App.jsx'],
+        newUI: [__dirname + '/src/newUI/App.jsx'],
     },
     mode: 'production',
     output: {
