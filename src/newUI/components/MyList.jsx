@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
@@ -36,7 +35,7 @@ export default class MyList extends React.Component {
 				this.props.todos.todos.map((item, index) => 
 				<ListGroup.Item key={item.orderer}>
 					<MyInput data={item}
-							 typeTape={this.props.typeTape}/>
+							 dispatch={this.props.dispatch}/>
 				</ListGroup.Item>) // 需要带上 key 属性 <li >{item}</li>
       		}
 			</ListGroup>

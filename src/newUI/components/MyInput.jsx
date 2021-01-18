@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { connect } from 'react-redux';
 
 class MyInput extends React.Component {
 	// in this component receive command and args
@@ -12,40 +11,47 @@ class MyInput extends React.Component {
 		super(props);
 		this.Debug =this.Debug.bind(this);
 		this.TapeType = this.TapeType.bind(this);
+		this.ShellType = this.ShellType.bind(this);
+		this.AddItem = this.AddItem.bind(this);
+		this.RemoveItem = this.RemoveItem.bind(this);
 	}
-/*
-	ShellType(event){
-		this.setState({
-			type:'Shell'
-		});
-	}
-*/
 
-	TapeType(event){
-		console.log(event.target.id)
-		dispatch(
+	ShellType(event){
+		this.props.dispatch(
 			({
-				type: 'TYPE_TAPE',
-				order: event.target.id,
+				type: 'TYPE_SHELL',
+				order: this.props.data.order,
 			})
 		)
 	}
-/*s
+
+
+	TapeType(event){
+		this.props.dispatch(
+			({
+				type: 'TYPE_TAPE',
+				order: this.props.data.order,
+			})
+		)
+	}
+
 	AddItem(event) {
-		var args = this.state.args;
-		args.push('');
-		this.setState({
-			args:args
-		});
+		this.props.dispatch(
+			({
+				type: 'ADD_ARG',
+				order: this.props.data.order,
+			})
+		)
 	}
 
 	RemoveItem(event){
-		var args = this.state.args;
-		args.pop()
-		this.setState({
-			args:args
-		});
-	}*/
+		this.props.dispatch(
+			({
+				type: 'REMOVE_ARG',
+				order: this.props.data.order,
+			})
+		)
+	}
 
 	Debug(event){
 		alert("send to back end as starting "+JSON.stringify(this.props.data));
@@ -61,8 +67,8 @@ class MyInput extends React.Component {
 				title="Type"
 				id="input-group-dropdown-1"
 				>
-				<Dropdown.Item as="button" id={this.props.data.order} >Shell</Dropdown.Item>
-				<Dropdown.Item as="button" id={this.props.data.order} onClick={this.TapeType}>Tape</Dropdown.Item>
+				<Dropdown.Item as="button" onClick={this.ShellType}>Shell</Dropdown.Item>
+				<Dropdown.Item as="button" onClick={this.TapeType}>Tape</Dropdown.Item>
 				</DropdownButton>
 				<ListGroup.Item>{this.props.data.cmdType}</ListGroup.Item>
 				{
@@ -71,17 +77,12 @@ class MyInput extends React.Component {
 					) // 需要带上 key 属性 <li >{item}</li> <ListGroup.Item key={index}>{item}</ListGroup.Item>
       			}
 			  	</ListGroup>
-				<Button variant="info" >Add New Arg</Button>
-				<Button variant="warning" >Remove Last Arg</Button>
+				<Button variant="info" onClick={this.AddItem}>Add New Arg</Button>
+				<Button variant="warning" onClick={this.RemoveItem}>Remove Last Arg</Button>
 				<Button variant="warning" onClick={this.Debug}>Show Command</Button>
 			</div>
 		);
 	}
 }
 
-// onClick={this.ShellType}
-// onClick={this.TapeType}
-// onClick={this.AddItem}
-// onClick={this.RemoveItem}
-
-export default connect()(MyInput);
+export default MyInput;
