@@ -8,7 +8,7 @@
     "lint": "eslint --ext .js ./lib ./routes ./test ./e2e",
     "test": "export NODE_ENV=test PORT=3300 && nyc mocha 'test/**/*.test.js' --timeout 5000 --exit",
     "cover:report": "nyc report --reporter=lcov --reporter=text",
-    "e2e": "export NODE_ENV=test PORT=3000 && mocha 'e2e/**/*.test.js' --timeout 3600000 --exit",
+    "e2e": "export NODE_ENV=test PORT=3000 && mocha 'e2e/**/*.test.js' --timeout 600000 --exit",
     "build": "webpack"
   },
   "repository": {
