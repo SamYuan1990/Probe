@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MyList from './components/MyList.jsx'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './reducers'
 
 class App extends React.Component {
 	render () {
@@ -13,14 +16,10 @@ class App extends React.Component {
 }
 
 // Rendering the entire react application
-/* 
-ReactDOM.render(
-    <Provider store={store}>
-		<App/>
-	</Provider>,
-, document.getElementById('root'));
-*/
+const store = createStore(rootReducer)
  
 ReactDOM.render(
+	<Provider store={store}>
 		<App/>
-, document.getElementById('root'));
+		</Provider>,
+document.getElementById('root'));
