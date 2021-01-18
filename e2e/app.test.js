@@ -17,7 +17,7 @@ describe('# test app.js', function () {
         request.post('/api/run').set('Content-Type', 'application/x-www-form-urlencoded').send(
             {
                 Path: './fabric-samples/test-network/',
-                BatchTimeout:'1,2',
+                BatchTimeout:'1',
                 MaxMessageCount:'10',
                 AbsoluteMaxBytes:'3',
                 PreferredMaxBytes:'4',
@@ -25,7 +25,7 @@ describe('# test app.js', function () {
                 PrepareCLI:'./prepareConfig.sh',
                 StartCLI:'./network.sh',
                 CCDeployCLI:'./network.sh',
-                TapeCount: '5000',
+                TapeCount: '500',
                 ShutDownCLI: './network.sh'
             }).expect(200, done);
     });
