@@ -1,12 +1,24 @@
-import {VisibilityFilters} from '../actions';
-
-const visibilityFilter = (state = VisibilityFilters.SHOW_ALL, action) => {
+const todos = (state = { arr: [] }, action) => {
     switch (action.type) {
-        case 'SET_VISIBILITY_FILTER':
-            return action.filter;
-        default:
-            return state;
+      case 'ADD_TODO':
+        return {
+          id: action.id,
+          text: action.text,
+          completed: false
+        }
+      case 'TOGGLE_TODO':
+        if (state.id !== action.id) {
+          return state
+        }
+  
+        return {
+          ...state,
+          completed: !state.completed
+        }
+      default:
+        return state
     }
-};
-
-export default visibilityFilter;
+  }
+  
+  export default todos
+  

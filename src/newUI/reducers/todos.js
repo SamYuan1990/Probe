@@ -1,43 +1,32 @@
-import undoable from 'redux-undo'
+const todos = (state = [{order:0, cmdType: 'Shell', args:[]}], action) => {
+    switch (action.type) {
+        case 'ADD_TODO':
+            return [
+                ...state,
+                {
+                    orderer: state.length,
+                    cmdType: 'Shell',
+                    args : []
+                }
+            ];
+        case 'REMOVE_TODO':
+            state.pop();
+            return state;
+        case 'TYPE_TAPE':
+            console.log(action);
+            console.log(state);
+            return state;
+        default:
+            return state;
+    }
+};
 
-const todo = (state, action) => {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return {
-        id: action.id,
-        text: action.text,
-        completed: false
-      }
-    case 'TOGGLE_TODO':
-      if (state.id !== action.id) {
-        return state
-      }
+export default todos;
 
-      return {
-        ...state,
-        completed: !state.completed
-      }
-    default:
-      return state
-  }
+/*
+id:{
+  orderer: id,
+  cmdType: string,
+  args : []
 }
-
-const todos = (state = [], action) => {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return [
-        ...state,
-        todo(undefined, action)
-      ]
-    case 'TOGGLE_TODO':
-      return state.map(t =>
-        todo(t, action)
-      )
-    default:
-      return state
-  }
-}
-
-const undoableTodos = undoable(todos)
-
-export default undoableTodos
+*/
