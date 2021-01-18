@@ -41,6 +41,7 @@
     "pug": "^3.0.0",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
+    "redux-undo": "^1.0.1",
     "system-sleep": "^1.3.7"
   },
   "devDependencies": {
