@@ -14,6 +14,7 @@ function render(){
 			addItem={() => store.dispatch({ type: 'ADD_TODO' })}
 			removeItem={() => store.dispatch({ type: 'REMOVE_TODO' })}
 			typeTape={() => store.dispatch({ type: 'TYPE_TAPE' })}
+			ApplyTestNetwork = {() => store.dispatch({ type: 'TEST_NET_SAMPLE' })}
 			dispatch = {store.dispatch}
 		/>
 	,rootEl);

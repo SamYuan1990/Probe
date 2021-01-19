@@ -15,6 +15,7 @@ class MyInput extends React.Component {
 		this.AddItem = this.AddItem.bind(this);
 		this.RemoveItem = this.RemoveItem.bind(this);
 		this.onChange = this.onChange.bind(this);
+		this.PrePare = this.PrePare.bind(this);
 	}
 
 	ShellType(event){
@@ -30,6 +31,15 @@ class MyInput extends React.Component {
 		this.props.dispatch(
 			({
 				type: 'TYPE_TAPE',
+				order: this.props.data.order,
+			})
+		)
+	}
+
+	PrePare(event){
+		this.props.dispatch(
+			({
+				type: 'TYPE_PREPARE',
 				order: this.props.data.order,
 			})
 		)
@@ -80,6 +90,7 @@ class MyInput extends React.Component {
 				>
 				<Dropdown.Item as="button" onClick={this.ShellType}>Shell</Dropdown.Item>
 				<Dropdown.Item as="button" onClick={this.TapeType}>Tape</Dropdown.Item>
+				<Dropdown.Item as="button" onClick={this.PrePare}>PrePare</Dropdown.Item>
 				</DropdownButton>
 				<ListGroup.Item>{this.props.data.cmdType}</ListGroup.Item>
 				{
