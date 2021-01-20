@@ -53,8 +53,9 @@ You are able to know better with how your changes impacts Fabric TPS in over all
 ## Version Plan
 version | define| feature
 ---|---|---
-0.0.2 | back end refactor | may support other type fabric network starter, may adding caliper support
-1.0.0 | fix up bugs after 0.0.2 | 
+0.0.2 | UI refactor | UI enhancement to support args
+0.0.3 | back end refactor | may support other type fabric network starter, may adding caliper support
+1.0.0 | fix up bugs after 0.0.3 | 
 
 # How to contribute
 
