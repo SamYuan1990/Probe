@@ -20,12 +20,20 @@ export default class MyList extends React.Component {
 
 
 	RUN(event){
-		alert("send to back end as starting "+JSON.stringify(this.props.todos));
-		//$.post('/api/run',this.state)
+		//alert("send to back end as starting "+JSON.stringify(this.props.todos));
+		let data = {};
+		data.BatchTimeout = this.props.todos.todos.BatchTimeout;
+		data.MaxMessageCount = this.props.todos.todos.MaxMessageCount;
+		data.AbsoluteMaxBytes = this.props.todos.todos.AbsoluteMaxBytes;
+		data.PreferredMaxBytes = this.props.todos.todos.PreferredMaxBytes;
+		data.path = this.props.todos.todos.path;
+		data.cmd = JSON.stringify(this.props.todos.todos.cmd);
+		alert(JSON.stringify(data));
+		$.post('/api/run/new',data);
 	}
 
 	Check(event){
-		alert("send to back end as starting "+JSON.stringify(this.props.todos));
+		alert("send to back end as starting "+JSON.stringify(this.props.todos.todos));
 	} 
 
 	changePath(event){

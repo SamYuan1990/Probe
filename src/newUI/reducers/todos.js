@@ -1,8 +1,8 @@
-const todos = (state = {path:'./fabric-samples', BatchTimeout:'1', MaxMessageCount:'10', AbsoluteMaxBytes:'2', PreferredMaxBytes:'512', cmd:[{order:0, cmdType: 'Shell', args:['']}]}, action) => {
+const todos = (state = {path:'./fabric-samples/test-network', BatchTimeout:'1', MaxMessageCount:'10', AbsoluteMaxBytes:'2', PreferredMaxBytes:'512', cmd:[{order:0, cmdType: 'Shell', args:['']}]}, action) => {
     switch (action.type) {
         case 'TEST_NET_SAMPLE':
             state = {
-                path:'./fabric-samples',
+                path:'./fabric-samples/test-network',
                 BatchTimeout:'1,2',
                 MaxMessageCount:'10',
                 AbsoluteMaxBytes:'2',

@@ -26,6 +26,10 @@ function prepareArray(input) {
     return input.toString().split(',');
 }
 
+function prepareArrayNew(input) {
+    return input.split(',');
+}
+
 router.post('/run', function(req, res, next) {
     res.send('process start at ' + new Date().toString() + ' go to /result to see result');
     fs.writeFileSync(lockFile, '123');
@@ -56,6 +60,28 @@ router.post('/run', function(req, res, next) {
     const PreferredMaxBytes = prepareArray(req.body.PreferredMaxBytes);
     logger.info('process start');
     const status = libs.Run(CmdInfo, BatchTimeout, MaxMessageCount, AbsoluteMaxBytes, PreferredMaxBytes);
+    logger.info(status);
+    fs.unlinkSync(lockFile);
+});
+
+router.post('/run/new', function(req, res, next) {
+    logger.info(req.body);
+    res.send('process start at ' + new Date().toString() + ' go to /result to see result');
+    fs.writeFileSync(lockFile, '123');
+    fileIO.init();
+    logger.info('process start');
+    const BatchTimeout = prepareArrayNew(req.body.BatchTimeout);
+    const MaxMessageCount = prepareArrayNew(req.body.MaxMessageCount);
+    const AbsoluteMaxBytes = prepareArrayNew(req.body.AbsoluteMaxBytes);
+    const PreferredMaxBytes = prepareArrayNew(req.body.PreferredMaxBytes);
+    const cmdPath = req.body.path;
+    const cmds = JSON.parse(req.body.cmd);
+    let dryRun = false;
+    if (req.body.dryRun) {
+        dryRun = true;
+    }
+    logger.info('process start');
+    const status = libs.RunNew(BatchTimeout, MaxMessageCount, AbsoluteMaxBytes, PreferredMaxBytes, dryRun, cmdPath, cmds);
     logger.info(status);
     fs.unlinkSync(lockFile);
 });
