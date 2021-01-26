@@ -37,11 +37,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/', indexRouter);
+app.use('/oldUI', indexRouter);
 app.use('/result', resultRouter);
 app.use('/api', apiRouter);
 app.use('/quick', quickRouter);
-app.use('/newUI', newUIRouter);
+app.use('/', newUIRouter);
 
 
 // catch 404 and forward to error handler
