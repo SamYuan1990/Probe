@@ -109,9 +109,9 @@ describe('# test app.js', function () {
 
     // http://localhost:3000/newUI
 
-    it('GET /newUI', function (done) {
+    it('GET /oldUI', function (done) {
         request
-            .get('/newUI')
+            .get('/oldUI')
             .expect(200, done);
     });
     /* it('GET /quick/BatchTimeout dryrun', function (done) {
