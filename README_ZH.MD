@@ -2,49 +2,36 @@
 [![Build Status](https://dev.azure.com/yy19902439/yy19902439/_apis/build/status/SamYuan1990.Probe?branchName=main)](https://dev.azure.com/yy19902439/yy19902439/_build/latest?definitionId=8&branchName=main)
 
 ## Probe是什么
-![probe define](probe.png)
-[Probe](https://www.bilibili.com/video/BV1dV411y7oZ)是一个面向Hyperledger Fabric维护者，用户，研究者的web UI的应用程序，我们可以用它来观察Fabric出块参数对于Fabric网络TPS的影线。
+
+![Probe](doc/Probe.png)
+根据[性能测试白皮书](https://www.hyperledger.org/learn/publications/blockchain-performance-metrics), Probe是一个面向Hyperledger Fabric维护者，用户，研究者的web UI的应用程序，旨在提供控制被测网络（SUT）并协调压力生成工具于观察工具，来针对性的观察Fabric出块参数对于Fabric网络性能的影响。
 
 - 提供循环测试控制。
+- 提供可视化的结果对比图。
 - 提供基于test-network的配置案例。
-- 提供可视化的tps结果对比图。
 
-## 当前基于Probe的研究结果
-- [HowToConfigFabricParameters](doc/HowToConfigFabricParameters.md)
+## 可以用Probe做什么
 - [如何通过Probe配置调整Fabric参数](doc/HowToConfigFabricParameters_ZH.md)
 
 ## 为什么使用Probe
 Probe是在[TWGC performance work group](https://github.com/Hyperledger-TWGC/fabric-performance-wiki)的交流中中，我们对于“如何配置出块参数来达到最大tps？”这一问题的回答而创立并实现的项目。
 
-### 对于Hyperledger Fabric使用者而言
-可以通过如下步骤，更好的了解对于指定智能合约，如何达到最大tps。
-1. 准备环境
-1. 启动Probe
-1. 观察TPS结果
-
-### 对于Hyperledger Fabric研究人员和维护者
-可以通过如下步骤，更好的了解你的改动如何影响了Hyperledger Fabric的性能。
-1. 完成你的代码，打包Fabric
-1. 启动Probe
-1. 观察结果
-
 ## Probe不做什么
-- 实时监控，如需要，请参考配置Prometheus(但是[Probe提供基于test-network的配置案例](https://www.bilibili.com/video/BV1x54y1x78Z))
-- 完整的自动测试框架，对于部署方式，目前依赖于test-network
-- 性能测试工具，对于性能测试本身，目前依赖与Tape
+- 实时监控，如需要，请参考配置Prometheus
+- 完整的自动测试框架，对于SUT的部署方式，目前依赖于test-network
+- 性能测试工具（LGC），对于性能测试本身，目前依赖于Tape
 - Tape的GUI版本
 
 ## 快速上手
-1. install this project `npm install`
-2. install fabric sample `curl -vsS https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash`
-3. get tape `docker pull guoger/tape`
-4. apply the bridge file to adjust block parameters for test network `cp sample/prepareConfig.sh fabric-samples/test-network`
-5. npm start
-6. access localhost:3000, submit form with placeholder
-7. access localhost:3000/result/BatchTimeout
-8. access localhost:3000/result/MaxMessageCount
-9. access localhost:3000/result/AbsoluteMaxBytes
-10. access localhost:3000/result/PreferredMaxBytes
+1. 安装项目 `npm install`
+1. 下载fabric-sample `curl -vsS https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash`
+1. 下载tape的dockeer版本 `docker pull guoger/tape`
+1. 将参数控制脚本通过以下命令安装 `cp sample/prepareConfig.sh fabric-samples/test-network`
+1. 启动Probe `npm start`
+1. 打开`localhost:3000`, 点击![TestNetworkSample](doc/quick_sample.png)
+1. 点击![submit](doc/quicksample2.png)
+1. 待完成后访问 `localhost:3000/result/BatchTimeout` 查看TPS与BatchTimeout之间的关系
+1. 待完成后访问 `localhost:3000/result/MaxMessageCount` 查看TPS与MaxMessageCount之间的关系
 
 ## 维护和升级计划
 version | define| feature
@@ -53,7 +40,7 @@ version | define| feature
 0.0.3 | back end refactor | may support other type fabric network starter, may adding caliper support
 1.0.0 | fix up bugs after 0.0.3 | 
 
-# 如何贡献
+## 如何贡献
 
 如果您想为 Probe 添加新的特性，或者修复 bug，非常欢迎您在创建 issue，当然，如果能提交 PR 会更好。
 
@@ -64,3 +51,9 @@ version | define| feature
 请使用`npm run build`来开发前台。
 
 请使用`--DryRun`来通过`mock`的方式开发后台功能，但是请把实际测试案例加入CI。
+
+## 学习视频
+version | URL | comments
+---|---|---
+0.0.1 | https://www.bilibili.com/video/BV1x54y1x78Z | N/A
+0.0.1 | https://www.bilibili.com/video/BV1dV411y7oZ | N/A
