@@ -28,12 +28,27 @@ export default class MyList extends React.Component {
 		data.PreferredMaxBytes = this.props.todos.todos.PreferredMaxBytes;
 		data.path = this.props.todos.todos.path;
 		data.cmd = JSON.stringify(this.props.todos.todos.cmd);
-		alert(JSON.stringify(data));
+		alert('will run at path '+data.path);
+		alert('will run with Batch timeout list '+ data.BatchTimeout);
+		alert('will run with Max message count list '+ data.MaxMessageCount);
+		alert('will run with Absolute max bytes list '+ data.AbsoluteMaxBytes);
+		alert('will run with PreferredMaxBytes '+ data.PreferredMaxBytes);
 		$.post('/api/run/new',data);
 	}
 
 	Check(event){
-		alert("send to back end as starting "+JSON.stringify(this.props.todos.todos));
+		let data = {};
+		data.BatchTimeout = this.props.todos.todos.BatchTimeout;
+		data.MaxMessageCount = this.props.todos.todos.MaxMessageCount;
+		data.AbsoluteMaxBytes = this.props.todos.todos.AbsoluteMaxBytes;
+		data.PreferredMaxBytes = this.props.todos.todos.PreferredMaxBytes;
+		data.path = this.props.todos.todos.path;
+		data.cmd = JSON.stringify(this.props.todos.todos.cmd);
+		alert('config run at path '+data.path);
+		alert('config with Batch timeout list '+ data.BatchTimeout);
+		alert('config with Max message count list '+ data.MaxMessageCount);
+		alert('config with Absolute max bytes list '+ data.AbsoluteMaxBytes);
+		alert('config with PreferredMaxBytes '+ data.PreferredMaxBytes);
 	} 
 
 	changePath(event){
@@ -89,6 +104,7 @@ export default class MyList extends React.Component {
 			<Card.Header>Config Your Commands</Card.Header>
 			<Card.Body>
 			<Button variant="info" onClick={this.props.ApplyTestNetwork}>TestNetwork Sample</Button>
+			<Button variant="info" onClick={this.props.ApplyTestNetworkWithMonitor}>TestNetwork With Monitor Sample</Button>
 			<ListGroup variant="flush">
 			<ListGroup>Path <input type="text" onChange={this.changePath} placeholder={this.props.todos.todos.path}/> </ListGroup>
 			<ListGroup>BatchTimeout List <input type="text" onChange={this.changeBatchTimeout} placeholder={this.props.todos.todos.BatchTimeout}/> </ListGroup>
