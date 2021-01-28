@@ -36,9 +36,9 @@ Probe是在[TWGC performance work group](https://github.com/Hyperledger-TWGC/fab
 ## 维护和升级计划
 version | define| feature
 ---|---|---
-0.0.2 | UI refactor | UI enhancement to support args
 0.0.3 | back end refactor | may support other type fabric network starter, may adding caliper support
 1.0.0 | fix up bugs after 0.0.3 | 
+1.0.1 | furhter network supports | supports cello ? and other parameters
 
 ## 如何贡献
 
@@ -57,3 +57,4 @@ version | URL | comments
 ---|---|---
 0.0.1 | https://www.bilibili.com/video/BV1x54y1x78Z | N/A
 0.0.1 | https://www.bilibili.com/video/BV1dV411y7oZ | N/A
+0.0.2 | https://www.bilibili.com/video/bv13t4y1B7AE | N/A
