@@ -36,9 +36,9 @@ Probe是在[TWGC performance work group](https://github.com/Hyperledger-TWGC/fab
 ## 维护和升级计划
 version | define| feature
 ---|---|---
-0.0.3 | back end refactor | may support other type fabric network starter, may adding caliper support
+0.0.3 | back end refactor | i18n & minifab
 1.0.0 | fix up bugs after 0.0.3 | 
-1.0.1 | furhter network supports | supports cello ? and other parameters
+1.0.1 | furhter network supports | supports caliper, cello ? and other platform
 
 ## 如何贡献
 
