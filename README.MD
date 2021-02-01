@@ -1,5 +1,7 @@
 # Probe
 [![Build Status](https://dev.azure.com/yy19902439/yy19902439/_apis/build/status/SamYuan1990.Probe?branchName=main)](https://dev.azure.com/yy19902439/yy19902439/_build/latest?definitionId=8&branchName=main)
+[![Issues](https://img.shields.io/github/issues/SamYuan1990/Probe?color=0088ff)](https://github.com/SamYuan1990/Probe/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/SamYuan1990/Probe?color=0088ff)](https://github.com/SamYuan1990/Probe/pulls)
 
 [中文](README_ZH.MD)
 
