@@ -27,15 +27,29 @@ To answer, the best parameter for specific fabric network and fabric chaincode, 
 - GUI for tape, tape focus on once off time performance testing.
 
 ## Quick start
-1. install this project `npm install`
-1. install fabric sample `curl -vsS https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash`
-1. get tape `docker pull guoger/tape`
-1. apply the bridge file to adjust block parameters for test network `cp sample/prepareConfig.sh fabric-samples/test-network`
+1. Install this project `npm install`
+
+1. Install fabric sample `curl -vsS https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash`
+
+1. Visit and download the fabric environment installation script :
+
+   `https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh`
+
+1. Install the environment `. bootstrap.sh`
+
+1. Get tape `docker pull guoger/tape`
+
+1. Apply the bridge file to adjust block parameters for test network `cp sample/prepareConfig.sh fabric-samples/test-network`
+
 1. `npm start`
-1. access localhost:3000, click ![TestNetworkSample](doc/quick_sample.png)
-1. click![submit](doc/quicksample2.png)
-1. access `localhost:3000/result/BatchTimeout` to see TPS relationship with BatchTimeout
-1. access `localhost:3000/result/MaxMessageCount` to see TPS relationship with MaxMessageCount
+
+1. Access localhost:3000, click ![TestNetworkSample](doc/quick_sample.png)
+
+1. Click![submit](doc/quicksample2.png)
+
+1. Access `localhost:3000/result/BatchTimeout` to see TPS relationship with BatchTimeout
+
+1. Access `localhost:3000/result/MaxMessageCount` to see TPS relationship with MaxMessageCount
 
 ## Version Plan
 version | define| feature

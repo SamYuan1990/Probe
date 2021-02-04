@@ -25,6 +25,8 @@ Probe是在[TWGC performance work group](https://github.com/Hyperledger-TWGC/fab
 ## 快速上手
 1. 安装项目 `npm install`
 1. 下载fabric-sample `curl -vsS https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash`
+1. 下载fabric环境安装脚本`https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh`
+1. 安装fabric环境`https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh`
 1. 下载tape的dockeer版本 `docker pull guoger/tape`
 1. 将参数控制脚本通过以下命令安装 `cp sample/prepareConfig.sh fabric-samples/test-network`
 1. 启动Probe `npm start`
