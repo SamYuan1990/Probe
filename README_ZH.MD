@@ -34,20 +34,34 @@ Probe是在[TWGC performance work group](https://github.com/Hyperledger-TWGC/fab
   如果上述curl命令执行失败，这可能是由于部分国家或地区的网络原因导致curl的ssl握手失败。
   在这种情况下，我们建议用户手工下载bootstrap.sh脚本和运行。
  ```
-5. 下载tape的dockeer版本 `docker pull guoger/tape`
-6. 将参数控制脚本通过以下命令安装 `cp sample/prepareConfig.sh fabric-samples/test-network`
-7. 启动Probe `npm start`
-8. 打开`localhost:3000`, 点击![TestNetworkSample](doc/quick_sample.png)
-9. 点击![submit](doc/quicksample2.png)
-10. 待完成后访问 `localhost:3000/result/BatchTimeout` 查看TPS与BatchTimeout之间的关系
-11. 待完成后访问 `localhost:3000/result/MaxMessageCount` 查看TPS与MaxMessageCount之间的关系
-12. 下载tape的dockeer版本 `docker pull guoger/tape`
-13. 将参数控制脚本通过以下命令安装 `cp sample/prepareConfig.sh fabric-samples/test-network`
-14. 启动Probe `npm start`
-15. 打开`localhost:3000`, 点击![TestNetworkSample](doc/quick_sample.png)
-16. 点击![submit](doc/quicksample2.png)
-17. 待完成后访问 `localhost:3000/result/BatchTimeout` 查看TPS与BatchTimeout之间的关系
-18. 待完成后访问 `localhost:3000/result/MaxMessageCount` 查看TPS与MaxMessageCount之间的关系
+3. 下载tape的dockeer版本 `docker pull guoger/tape`
+
+4. 将参数控制脚本通过以下命令安装 `cp sample/prepareConfig.sh fabric-samples/test-network`
+
+5. 启动Probe `npm start`
+
+6. 打开`localhost:3000`, 点击![TestNetworkSample](doc/quick_sample.png)
+
+7. 点击![submit](doc/quicksample2.png)
+
+8. 待完成后访问 `localhost:3000/result/BatchTimeout` 查看TPS与BatchTimeout之间的关系
+
+9. 待完成后访问 `localhost:3000/result/MaxMessageCount` 查看TPS与MaxMessageCount之间的关系
+
+10. 下载tape的dockeer版本 `docker pull guoger/tape`
+
+11. 将参数控制脚本通过以下命令安装 `cp sample/prepareConfig.sh fabric-samples/test-network`
+
+12. 启动Probe `npm start`
+
+13. 打开`localhost:3000`, 点击![TestNetworkSample](doc/quick_sample.png)
+
+14. 点击![submit](doc/quicksample2.png)
+
+15. 待完成后访问 `localhost:3000/result/BatchTimeout` 查看TPS与BatchTimeout之间的关系
+
+16. 待完成后访问 `localhost:3000/result/MaxMessageCount` 查看TPS与MaxMessageCount之间的关系
+
 ## 维护和升级计划
 version | define| feature
 ---|---|---
