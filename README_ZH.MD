@@ -24,13 +24,28 @@ Probe是在[TWGC performance work group](https://github.com/Hyperledger-TWGC/fab
 
 ## 快速上手
 1. 安装项目 `npm install`
-1. 下载fabric-sample `curl -vsS https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash`
+
+1. 安装fabric-sample环境
+
+   `curl -vsS https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash`
+
+   **【注】**
+
+   如果上述curl命令执行失败，这可能是由于部分国家或地区的网络原因导致curl的ssl握手失败。
+在这种情况下，我们建议用户手工下载[bootstrap.sh](https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh)脚本和运行。
+
 1. 下载tape的dockeer版本 `docker pull guoger/tape`
+
 1. 将参数控制脚本通过以下命令安装 `cp sample/prepareConfig.sh fabric-samples/test-network`
+
 1. 启动Probe `npm start`
+
 1. 打开`localhost:3000`, 点击![TestNetworkSample](doc/quick_sample.png)
+
 1. 点击![submit](doc/quicksample2.png)
+
 1. 待完成后访问 `localhost:3000/result/BatchTimeout` 查看TPS与BatchTimeout之间的关系
+
 1. 待完成后访问 `localhost:3000/result/MaxMessageCount` 查看TPS与MaxMessageCount之间的关系
 
 ## 维护和升级计划
