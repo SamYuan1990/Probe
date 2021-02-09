@@ -1,0 +1,12 @@
+{
+    "welcome": "欢迎使用Probe",
+    "move": "输入参数然后执行",
+    "demo_config":"如何配置Probe",
+    "result_header":"探索结果",
+    "resultBatchTimeout":"基于BatchTimeout",
+    "resultMaxMessageCount":"基于MaxMessageCount",
+    "resultAbsoluteMaxBytes":"基于AbsoluteMaxBytes",
+    "resultPreferredMaxBytes":"基于PreferredMaxBytes",
+    "Feedback":"在Github上反馈",
+    "change_lang":"切换语言"
+}

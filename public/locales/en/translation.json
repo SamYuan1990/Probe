@@ -1,0 +1,12 @@
+{
+    "welcome": "Welcome, here is Probe",
+    "move": "input your parameters and go",
+    "demo_config":"How to config Probe",
+    "result_header":"Explore result here",
+    "resultBatchTimeout":"Base BatchTimeout",
+    "resultMaxMessageCount":"Base MaxMessageCount",
+    "resultAbsoluteMaxBytes":"Base AbsoluteMaxBytes",
+    "resultPreferredMaxBytes":"Base PreferredMaxBytes",
+    "Feedback":"Feedback on Github",
+    "change_lang":"Switch Language"
+}
