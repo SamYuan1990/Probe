@@ -10,3 +10,4 @@ nohup.out
 log.txt
 logger.log
 tmp
+data/rs.csv

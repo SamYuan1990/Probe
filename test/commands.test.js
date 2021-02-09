@@ -134,8 +134,6 @@ describe('# commands', function () {
         expect('network up').to.be.equals(cmd.info);
         expect('up').to.be.equals(cmd.args[0]);
         expect('createChannel').to.be.equals(cmd.args[1]);
-        expect('-i').to.be.equals(cmd.args[2]);
-        expect('2.2').to.be.equals(cmd.args[3]);
         done();
     });
 
