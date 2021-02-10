@@ -67,6 +67,8 @@ jobs:
          displayName: checkLog
 
   - job: releasePage
+    dependsOn:
+    - e2e
     steps:
       - task: GitHubRelease@1
         inputs:
