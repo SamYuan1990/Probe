@@ -83,7 +83,7 @@ describe('# test app.js', function () {
                 AbsoluteMaxBytes: '2',
                 PreferredMaxBytes: '512',
                 path: './fabric-samples',
-                cmd: '[{"order":0,"cmdType":"PrePare","args":["./prepareConfig.sh"]},{"order":1,"cmdType":"Shell","args":["./network.sh","up","createChannel"]},{"order":2,"cmdType":"Shell","args":["./network.sh","deployCC","-d","5","-ccn","basic","-ccp","../asset-transfer-basic/chaincode-go/","-ccl","go"]},{"order":3,"cmdType":"Shell","args":["sleep","10"]},{"order":4,"cmdType":"Tape","args":["docker","run","--name","tape","-e","TAPE_LOGLEVEL=debug","--network","host","-v","./:/config","guoger/tape","tape","-c","/config/config.yaml","-n","500"]},{"order":5,"cmdType":"Shell","args":["docker","rm","tape"]},{"order":6,"cmdType":"Shell","args":["./network.sh","down"]},{"order":7,"cmdType":"Shell","args":["sleep","10"]}]'
+                cmd: '[{"order":0,"cmdType":"PrePare","args":["./prepareConfig.sh"]},{"order":1,"cmdType":"Shell","args":["./network.sh","up","createChannel"]},{"order":2,"cmdType":"Shell","args":["./network.sh","deployCC","-d","5","-ccn","basic","-ccp","../asset-transfer-basic/chaincode-go/","-ccl","go"]},{"order":3,"cmdType":"Shell","args":["sleep","10"]},{"order":4,"cmdType":"Tape","args":["docker","run","--name","tape","-e","TAPE_LOGLEVEL=debug","--network","host","-v",".//:/config","guoger/tape","tape","-c","/config/config.yaml","-n","500"]},{"order":5,"cmdType":"Shell","args":["docker","rm","tape"]},{"order":6,"cmdType":"Shell","args":["./network.sh","down"]},{"order":7,"cmdType":"Shell","args":["sleep","10"]}]'
             }).expect(200, done);
     });
 });
