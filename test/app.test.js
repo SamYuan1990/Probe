@@ -13,42 +13,6 @@ describe('# test app.js', function () {
             .expect(200, done);
     });
 
-    it('Post /api/run', function (done) {
-        request.post('/api/run').set('Content-Type', 'application/x-www-form-urlencoded').send(
-            {
-                Path: './fabric-samples/test-network/',
-                BatchTimeout:'1,2',
-                MaxMessageCount:'10',
-                AbsoluteMaxBytes:'3',
-                PreferredMaxBytes:'4',
-                CoolDown:'5',
-                PrepareCLI:'./prepareConfig.sh',
-                StartCLI:'./network.sh',
-                CCDeployCLI:'./network.sh',
-                TapeCount: '5000',
-                ShutDownCLI: './network.sh',
-                DryRun: true,
-                Monitor:true
-            }).expect(200, done);
-    });
-
-    it('Post /api/run 200 for any dry run', function (done) {
-        request.post('/api/run').set('Content-Type', 'application/x-www-form-urlencoded').send({
-            Path: './fabric-samples/test-network/',
-            BatchTimeout:'1,2',
-            MaxMessageCount:'10',
-            AbsoluteMaxBytes:'3',
-            PreferredMaxBytes:'4',
-            CoolDown:'5',
-            PrepareCLI:'./prepareConfig.sh',
-            StartCLI:'./network.sh',
-            CCDeployCLI:'./network.sh',
-            TapeCount: '5000',
-            ShutDownCLI: './network.sh',
-            DryRun: true
-        }).expect(200, done);
-    });
-
     it('GET /api/getBatchTimeout', function (done) {
         request
             .get('/api/get?data=BatchTimeout')
@@ -106,26 +70,6 @@ describe('# test app.js', function () {
             .get('/quick/config')
             .expect(200, done);
     });
-
-    // http://localhost:3000/newUI
-
-    it('GET /oldUI', function (done) {
-        request
-            .get('/oldUI')
-            .expect(200, done);
-    });
-    /* it('GET /quick/BatchTimeout dryrun', function (done) {
-        request
-            .get('/quick/BatchTimeout?DryRun=true')
-            .expect(200, done);
-    });
-
-    it('GET /quick/MaxMessageCount dryrun', function (done) {
-        request
-            .get('/quick/MaxMessageCount?DryRun=true')
-            .expect(200, done);
-    });*/
-
     it('Post /api/run/new 200 for any dry run', function (done) {
         request.post('/api/run/new').set('Content-Type', 'application/x-www-form-urlencoded').send(
             {

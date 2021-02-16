@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 // const logger = require('morgan');
 const ejs = require('ejs');
 
-const indexRouter = require('./routes/index');
+// const indexRouter = require('./routes/index');
 const resultRouter = require('./routes/result');
 const apiRouter = require('./routes/api');
 const quickRouter = require('./routes/quick');
@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/oldUI', indexRouter);
+// app.use('/oldUI', indexRouter);
 app.use('/result', resultRouter);
 app.use('/api', apiRouter);
 app.use('/quick', quickRouter);

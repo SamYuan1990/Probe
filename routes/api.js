@@ -22,47 +22,9 @@ router.get('/get', function(req, res, next) {
     }
 });
 
-function prepareArray(input) {
-    return input.toString().split(',');
-}
-
 function prepareArrayNew(input) {
     return input.split(',');
 }
-
-router.post('/run', function(req, res, next) {
-    res.send('process start at ' + new Date().toString() + ' go to /result to see result');
-    fs.writeFileSync(lockFile, '123');
-    fileIO.init();
-    logger.info(req.body);
-    let monitor = false;
-    if (req.body.Monitor === 'true') {
-        monitor = true;
-    }
-    const CmdInfo = {
-        Chaincode:'sample',
-        Path: req.body.Path,
-        CoolDown: parseFloat(req.body.CoolDown),
-        PrepareCLI: req.body.PrepareCLI,
-        StartCLI: req.body.StartCLI,
-        CCDeployCLI: req.body.CCDeployCLI,
-        ShutDownCLI: req.body.ShutDownCLI,
-        tapeCount: parseFloat(req.body.TapeCount),
-        DryRun: false,
-        Monitor: monitor,
-    };
-    if (req.body.DryRun) {
-        CmdInfo.DryRun = req.body.DryRun;
-    }
-    const BatchTimeout = prepareArray(req.body.BatchTimeout);
-    const MaxMessageCount = prepareArray(req.body.MaxMessageCount);
-    const AbsoluteMaxBytes = prepareArray(req.body.AbsoluteMaxBytes);
-    const PreferredMaxBytes = prepareArray(req.body.PreferredMaxBytes);
-    logger.info('process start');
-    const status = libs.Run(CmdInfo, BatchTimeout, MaxMessageCount, AbsoluteMaxBytes, PreferredMaxBytes);
-    logger.info(status);
-    fs.unlinkSync(lockFile);
-});
 
 router.post('/run/new', function(req, res, next) {
     logger.info(req.body);
