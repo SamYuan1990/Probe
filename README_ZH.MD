@@ -4,11 +4,16 @@
 ## Probe是什么
 
 ![Probe](doc/Probe.png)
-根据[性能测试白皮书](https://www.hyperledger.org/learn/publications/blockchain-performance-metrics), Probe是一个面向Hyperledger Fabric维护者，用户，研究者的web UI的应用程序，旨在提供控制被测网络（SUT）并协调压力生成工具于观察工具，来针对性的观察Fabric出块参数对于Fabric网络性能的影响。
+根据[性能测试白皮书](https://www.hyperledger.org/learn/publications/blockchain-performance-metrics), Probe是一个面向Hyperledger Fabric维护者，用户，研究者的web UI的应用程序，短期而言旨在提供控制被测网络（SUT）并协调压力生成工具于观察工具，来针对性的观察Fabric出块参数对于Fabric网络性能的影响。
 
 - 提供循环测试控制。
 - 提供可视化的结果对比图。
 - 提供基于test-network的配置案例。
+
+长期而言Probe计划扮演一个协调者的工作
+
+- Probe将允许您设计shell脚本来调度SUT和测试工具。
+- Probe将允许您以自定义的方式使用GUI来可视化性能指标和配置之间的关系。
 
 ## 可以用Probe做什么
 - [如何通过Probe配置调整Fabric参数](doc/HowToConfigFabricParameters_ZH.md)
@@ -52,8 +57,10 @@ Probe是在[TWGC performance work group](https://github.com/Hyperledger-TWGC/fab
 version | define| feature
 ---|---|---
 0.0.3 | back end refactor | i18n & minifab
-1.0.0 | fix up bugs after 0.0.3 | 
-1.0.1 | furhter network supports | supports caliper, cello ? and other platform
+0.0.4 | customer UI enhancement | allow user chose parameters to show on UI
+1.0.0 | fix up bugs after 0.0.4 | 
+1.1.x | tools supporting | supports caliper
+1.2.x | network starter supporting | supports cello
 
 ## 如何贡献
 
