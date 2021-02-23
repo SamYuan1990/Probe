@@ -7,11 +7,16 @@
 
 ## What is Probe
 ![Probe](doc/Probe.png)
-According to [blockchain-performance-metrics](https://www.hyperledger.org/learn/publications/blockchain-performance-metrics), Probe is a web GUI application for Hyperledger Fabric mantianer, user, research. Aims at providing a way to control both SUT and LGC to find the best block config logic for specific chaincode for specific fabric network.  Meanwhile has a better understanding of how block config impacts performance.
+According to [blockchain-performance-metrics](https://www.hyperledger.org/learn/publications/blockchain-performance-metrics), Probe is a web GUI application for Hyperledger Fabric mantianer, user, research. Recently, aims at providing a way to control both SUT and LGC to find the best block config logic for specific chaincode for specific fabric network.  Meanwhile has a better understanding of how block config impacts performance. 
 
 - Probe provides loop test control for given block parameter arrays.
 - Probe provides TPS result review via GUI.
 - Probe provides sample chaincode for some test cases.
+
+Long term goal for Probe is a coordinator between Test Harness or LGC, SUT.
+
+- Probe will allow you design shell scripts to schedule SUT and Test Harness.
+- Probe will allow you investigate performance matrix with GUI in customer way.
 
 ## You can use Probe to ...
 - [HowToConfigFabricParameters](doc/HowToConfigFabricParameters.md)
@@ -56,8 +61,10 @@ some countries and regions. At this time, users can download the [bootstrap.sh](
 version | define| feature
 ---|---|---
 0.0.3 | back end refactor | i18n & minifab
-1.0.0 | fix up bugs after 0.0.3 | 
-1.0.1 | furhter network supports | supports caliper, cello ? and other platform
+0.0.4 | customer UI enhancement | allow user chose parameters to show on UI
+1.0.0 | fix up bugs after 0.0.4 | 
+1.1.x | tools supporting | supports caliper
+1.2.x | network starter supporting | supports cello
 
 # How to contribute
 
