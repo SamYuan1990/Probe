@@ -77,13 +77,11 @@ jobs:
     steps:
        - script: npm install
          displayName: npmInstall
-       - script: 
-         displayName: downloadMiniFab
        - script: docker pull guoger/tape
          displayName: downloadTape
        - script: mkdir -p minifabric && cd minifabric &&  curl -o minifab -sL https://tinyurl.com/yxa2q6yr && chmod +x minifab && cd ..
-         displayName: download minifab
-       - script: cp sample/minifab/* minifab
+         displayName: download downloadMiniFab
+       - script: cp sample/minifab/* minifabric
          displayName: cpPrepareConfig
        - script: npm run e2eMiniFab
          displayName: startEnd2EndTest
