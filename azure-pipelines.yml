@@ -81,7 +81,7 @@ jobs:
          displayName: downloadMiniFab
        - script: docker pull guoger/tape
          displayName: downloadTape
-       - script: mkdir -p minifab && cd minifab &&  curl -o minifab -sL https://tinyurl.com/yxa2q6yr && chmod +x minifab && cd ..
+       - script: mkdir -p minifabric && cd minifabric &&  curl -o minifab -sL https://tinyurl.com/yxa2q6yr && chmod +x minifab && cd ..
          displayName: download minifab
        - script: cp sample/minifab/* minifab
          displayName: cpPrepareConfig
