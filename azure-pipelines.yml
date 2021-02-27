@@ -68,32 +68,32 @@ jobs:
        - script: cat logger.log
          displayName: checkLog
 
-  - job: e2eMiniFab
-    displayName: e2eMiniFabSample
-    dependsOn:
-    - ut
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-       - script: npm install
-         displayName: npmInstall
-       - script: docker pull guoger/tape
-         displayName: downloadTape
-       - script: mkdir -p minifabric && cd minifabric &&  curl -o minifab -sL https://tinyurl.com/yxa2q6yr && chmod +x minifab && cd ..
-         displayName: download downloadMiniFab
-       - script: cp sample/minifab/* minifabric
-         displayName: cpPrepareConfig
-       - script: npm run e2eMiniFab
-         displayName: startEnd2EndTest
-       - script: cat ./data/rs.csv
-         displayName: checkResult
-       - script: cat logger.log
-         displayName: checkLog
+#  - job: e2eMiniFab
+#    displayName: e2eMiniFabSample
+#    dependsOn:
+#    - ut
+#    pool:
+#      vmImage: 'ubuntu-latest'
+#    steps:
+#       - script: npm install
+#         displayName: npmInstall
+#       - script: docker pull guoger/tape
+#         displayName: downloadTape
+#       - script: mkdir -p minifabric && cd minifabric &&  curl -o minifab -sL https://tinyurl.com/yxa2q6yr && chmod +x minifab && cd ..
+#         displayName: download downloadMiniFab
+#       - script: cp sample/minifab/* minifabric
+#         displayName: cpPrepareConfig
+#       - script: npm run e2eMiniFab
+#         displayName: startEnd2EndTest
+#       - script: cat ./data/rs.csv
+#         displayName: checkResult
+#       - script: cat logger.log
+#         displayName: checkLog
 
   - job: releasePage
     dependsOn:
     - e2eTestNetwork
-    - e2eMiniFab
+#    - e2eMiniFab
     steps:
       - task: GitHubRelease@1
         inputs:
