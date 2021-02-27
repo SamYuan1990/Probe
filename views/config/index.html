@@ -1,10 +1,18 @@
 <div>
-    <p>here are two steps to config your probe quickly</p>
+    <p>with test network</p>
+    <p>here are two steps to config your probe with test network quickly</p>
     <p>curl -vsS https://raw.githubusercontent.com/hyperledger/fabric/release-2.2/scripts/bootstrap.sh | bash</p>
-    <p>cp sample/prepareConfig.sh fabric-samples/test-network</p>
+    <p>cp sample/test-network/prepareConfig.sh fabric-samples/test-network</p>
+    <p>cp sample/test-network/config.yaml . </p>
+    </br>
     <p>to enable monitor</p>
-    <p>cp -f sample/docker-compose-test-net.yaml  fabric-samples/test-network/docker</p>
+    <p>cp -f sample/test-network/docker-compose-test-net.yaml  fabric-samples/test-network/docker</p>
     <p>cd monitor</p>
     <p>docker-compose up -d</p>
     <p>http://localhost:3001/ for grafana with admin/adminpw or admin/admin</p>
+    </br>
+    <p>with minifab</p>
+    <p>here are two steps to config your probe with minifabric quickly</p>
+    <p>mkdir -p minifabric && cd minifabric &&  curl -o minifab -sL https://tinyurl.com/yxa2q6yr && chmod +x minifab && cd ..</p>
+    <p>cp sample/minifab/* minifabric</p>
 </div>
