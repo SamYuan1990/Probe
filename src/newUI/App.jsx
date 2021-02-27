@@ -16,6 +16,7 @@ function render(){
 			typeTape={() => store.dispatch({ type: 'TYPE_TAPE' })}
 			ApplyTestNetwork = {() => store.dispatch({ type: 'TEST_NET_SAMPLE' })}
 			ApplyTestNetworkWithMonitor = {() => store.dispatch({ type: 'TEST_NET_MONITOR_SAMPLE' })}
+			ApplyTestNetworkMinifab = {() => store.dispatch({ type: 'TEST_NET_MINIFAB' })}
 			dispatch = {store.dispatch}
 		/>
 	,rootEl);

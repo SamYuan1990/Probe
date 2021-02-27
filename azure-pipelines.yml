@@ -44,8 +44,8 @@ jobs:
         npm test
       displayName: 'npm ci'
 
-  - job: e2e
-    displayName: e2eSample
+  - job: e2eTestNetwork
+    displayName: e2eTestNetworkSample
     dependsOn:
     - ut
     pool:
@@ -57,9 +57,35 @@ jobs:
          displayName: downloadFabricSample
        - script: docker pull guoger/tape
          displayName: downloadTape
-       - script: cp sample/prepareConfig.sh fabric-samples/test-network
+       - script: cp sample/test-network/prepareConfig.sh fabric-samples/test-network
          displayName: cpPrepareConfig
-       - script: npm run e2e
+       - script: cp sample/test-network/config.yaml .
+         displayName: cpconfig.yaml
+       - script: npm run e2eTestNetwork
+         displayName: startEnd2EndTest
+       - script: cat ./data/rs.csv
+         displayName: checkResult
+       - script: cat logger.log
+         displayName: checkLog
+
+  - job: e2eMiniFab
+    displayName: e2eMiniFabSample
+    dependsOn:
+    - ut
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+       - script: npm install
+         displayName: npmInstall
+       - script: 
+         displayName: downloadMiniFab
+       - script: docker pull guoger/tape
+         displayName: downloadTape
+       - script: mkdir -p minifab &&  curl -o minifab -sL https://tinyurl.com/yxa2q6yr && chmod +x minifab
+         displayName: download minifab
+       - script: cp sample/minifab/* minifab
+         displayName: cpPrepareConfig
+       - script: npm run e2eMiniFab
          displayName: startEnd2EndTest
        - script: cat ./data/rs.csv
          displayName: checkResult
@@ -68,7 +94,8 @@ jobs:
 
   - job: releasePage
     dependsOn:
-    - e2e
+    - e2eTestNetwork
+    - e2eMiniFab
     steps:
       - task: GitHubRelease@1
         inputs:

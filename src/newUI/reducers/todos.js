@@ -1,5 +1,45 @@
 const todos = (state = {path:'./fabric-samples/test-network', BatchTimeout:'1', MaxMessageCount:'10', AbsoluteMaxBytes:'2', PreferredMaxBytes:'512', cmd:[{order:0, cmdType: 'Shell', args:['']}]}, action) => {
     switch (action.type) {
+        case 'TEST_NET_MINIFAB':
+            state = {
+                path:'./minifabric',
+                BatchTimeout:'1',
+                MaxMessageCount:'10,20',
+                AbsoluteMaxBytes:'103809024',
+                PreferredMaxBytes:'524288',
+                cmd:[
+                    {order:0, cmdType: 'Shell', args:['./minifab', 'up', '-i', '2.2']},
+                    {order:1, cmdType: 'Shell', args:['./minifab', 'channelquery', '-c', 'systemchannel']},
+                    {order:2, cmdType: 'Shell', args:['cp', 'vars/systemchannel_config.json', 'updatedchannel.json']},
+                    {order:3, cmdType: 'PrePare', args:['./prepareConfig.sh']},
+                    {order:4, cmdType: 'Shell', args:['cp', 'updatedchannel.json', 'vars/systemchannel_config.json']},
+                    {order:5, cmdType: 'Shell', args:['./minifab', 'channelsign,channelupdate', '-c', 'systemchannel']},
+                    {order:6, cmdType: 'Shell', args:['mkdir', '-p', '/tmp/minifab']},
+                    {order:7, cmdType: 'Shell', args:['cp', 'config.yaml', '/tmp/minifab']},
+                    {order:8, cmdType: 'Shell', args:['cp', '-r', './vars', '/tmp/minifab']},
+                    {order:9, cmdType: 'Tape', args:['docker',
+                        'run',
+                        '--name',
+                        'tape',
+                        '-e',
+                        'TAPE_LOGLEVEL=debug',
+                        '--network',
+                        'mysite0',
+                        '-v',
+                        '/tmp/minifab:/config',
+                        'guoger/tape',
+                        'tape',
+                        '-c',
+                        '/config/config.yaml',
+                        '-n',
+                        '500']},
+                    {order:10, cmdType: 'Shell', args:['docker', 'rm', 'tape']},
+                    {order:11, cmdType: 'Shell', args:['rm', '-rf', '/tmp/minifab']},
+                    {order:12, cmdType: 'Shell', args:['sleep', '10']},
+                    {order:13, cmdType: 'Shell', args:['./minifab', 'down']},
+                    {order:14, cmdType: 'Shell', args:['./minifab', 'cleanup']},
+                ]};
+            return state;
         case 'TEST_NET_SAMPLE':
             state = {
                 path:'./fabric-samples/test-network',
