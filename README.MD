@@ -84,3 +84,4 @@ version | URL | comments
 0.0.1 | https://www.bilibili.com/video/BV1x54y1x78Z | N/A
 0.0.1 | https://www.bilibili.com/video/BV1dV411y7oZ | N/A
 0.0.2 | https://www.bilibili.com/video/bv13t4y1B7AE | N/A
+0.0.3 | https://www.bilibili.com/video/BV1Kz4y1179L | N/A
