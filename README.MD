@@ -60,8 +60,12 @@ some countries and regions. At this time, users can download the [bootstrap.sh](
 ## Version Plan
 version | define| feature
 ---|---|---
-0.0.3 | back end refactor | i18n & minifab
 0.0.4 | customer UI enhancement | allow user chose parameters to show on UI
+0.0.5 | support different deploy plan with peers | 4/5 6/3 8/1
+0.0.6 | support different deploy plan with orgs | 2 3 4
+0.0.7 | support different deploy plan with gossip | 1:1 1:2 1:3
+0.0.8 | support different deploy plan with mvcc | 10 20 40
+0.0.9 | support different deploy plan with data size | 10k 512k 1M
 1.0.0 | fix up bugs after 0.0.4 | 
 1.1.x | tools supporting | supports caliper
 1.2.x | network starter supporting | supports cello
