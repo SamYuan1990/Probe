@@ -58,5 +58,16 @@ describe('# commands', function () {
             done();
         });
 
+        it('works for caliper', function (done) {
+            const cmd = JSON.parse('{"order":0,"cmdType":"Caliper","args":["tape", "-v", "./:/config"]}');
+            const target = commands.newVersionCommand(cmd, './Path', dryRun,
+                BatchTimeout, MaxMessageCountElement, AbsoluteMaxBytes, PreferredMaxBytes);
+            expect(target.DryRun).to.be.false;
+            expect(target.tps).to.be.true;
+            expect(target.command).to.be.equal('tape');
+            expect(target.args[0]).to.be.equal('-v');
+            expect(target.args[1].length > './:/config'.length).to.be.equal(true);
+            done();
+        });
     });
 });

@@ -67,6 +67,7 @@ describe('# libs', function () {
                 command: 'echo',
                 args: ['tx:500,duration:1.356275407s,tps:100'],
                 tps: true,
+                cmdType: 'Tape',
                 Path: './s'
             };
             expect('100').to.be.equals(libs.executeCommand(rs));
@@ -77,12 +78,32 @@ describe('# libs', function () {
     context('TapeTpsFilter', function() {
         it('should work', function(done) {
             const rs = {
-                output: 'tx: 500, duration: 1.356275407s, tps: 100\n'
+                output: 'tx: 500, duration: 1.356275407s, tps: 101\n'
             };
-            expect(' 100').to.be.equals(libs.TapeTpsFilter(rs));
+            expect(' 101').to.be.equals(libs.TapeTpsFilter(rs));
             done();
         });
     });
+
+    context('CaliperTpsFilter', function() {
+        it('should work', function(done) {
+            const rs = {
+                output: `2021.08.08-07:16:44.370 info  [caliper] [report-builder]
+                +-----------+-------+------+-----------------+-----------------+-----------------+-----------------+------------------+
+                | Name      | Succ  | Fail | Send Rate (TPS) | Max Latency (s) | Min Latency (s) | Avg Latency (s) | Throughput (TPS) |
+                |-----------|-------|------|-----------------|-----------------|-----------------|-----------------|------------------|
+                | readAsset | 12774 | 0    | 431.6           | 0.21            | -0.01           | 0.01            | 431.5            |
+                +-----------+-------+------+-----------------+-----------------+-----------------+-----------------+------------------+
+                
+                2021.08.08-07:16:44.381 info  [caliper] [report-builder]        Generated report with path /hyperledger/caliper/workspace/caliper-workspace/report.html
+                2021.08.08-07:16:44.381 info  [caliper] [monitor.js]    Stopping all monitors
+                2021.08.08-07:16:44.381 info  [caliper] [worker-orchestrator]   Sending exit me`
+            };
+            expect(' 431.5            ').to.be.equals(libs.CaliperTpsFilter(rs));
+            done();
+        });
+    });
+
 
     context('runNew', function() {
         it('run success', function(done) {

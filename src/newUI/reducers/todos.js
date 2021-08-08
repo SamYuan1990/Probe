@@ -1,5 +1,43 @@
 const todos = (state = {path:'./fabric-samples/test-network', BatchTimeout:'1', MaxMessageCount:'10', AbsoluteMaxBytes:'2', PreferredMaxBytes:'512', cmd:[{order:0, cmdType: 'Shell', args:['']}]}, action) => {
     switch (action.type) {
+        case 'TEST_NET_CALIPER':
+            state = {
+                path:'./fabric-samples/test-network',
+                BatchTimeout:'1,2',
+                MaxMessageCount:'10',
+                AbsoluteMaxBytes:'2',
+                PreferredMaxBytes:'512',
+                cmd:[
+                    {order:0, cmdType: 'PrePare', args:['./prepareConfig.sh']},
+                    {order:1, cmdType: 'Shell', args:['./network.sh', 'up', 'createChannel']},
+                    {order:2, cmdType: 'Shell', args:['./network.sh', 'deployCC', '-d', '5', '-ccn', 'basic', '-ccp', '../asset-transfer-basic/chaincode-go/', '-ccl', 'go']},
+                    {order:3, cmdType: 'Shell', args:['sleep', '10']},
+                    {order:4, cmdType: 'Caliper', args:['docker',
+                        'run',
+                        '--name',
+                        'caliper',
+                        '-v',
+                        './:/hyperledger/caliper/workspace',
+                        '--network',
+                        'host',
+                        'hyperledger/caliper:0.4.2',
+                        'launch',
+                        'manager',
+                        '--caliper-workspace',
+                        'caliper-workspace',
+                        '--caliper-networkconfig',
+                        'networkConfig.yaml',
+                        '--caliper-benchconfig',
+                        'myAssetBenchmark.yaml',
+                        '--caliper-flow-only-test',
+                        '--caliper-fabric-gateway-enabled',
+                        '--caliper-bind-sut',
+                        'fabric:2.2']},
+                    {order:5, cmdType: 'Shell', args:['docker', 'rm', 'caliper']},
+                    {order:6, cmdType: 'Shell', args:['./network.sh', 'down']},
+                    {order:7, cmdType: 'Shell', args:['sleep', '10']},
+                ]};
+            return state;
         case 'TEST_NET_MINIFAB':
             state = {
                 path:'./minifabric',
