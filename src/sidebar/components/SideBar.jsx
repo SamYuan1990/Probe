@@ -28,7 +28,7 @@ class ProbeNav extends React.Component {
 
 	  tick() {
 		if (!this.props.i18n.hasResourceBundle('en','welcome') || !this.state.loaded) {
-			console.log('aaaa');
+			//console.log('aaaa');
 			console.log(this.props.i18n.hasResourceBundle(this.state.lng,'welcome'));
 			this.props.i18n.changeLanguage(this.state.lng);
 			this.setState({

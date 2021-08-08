@@ -106,6 +106,7 @@ export default class MyList extends React.Component {
 			<Button variant="info" onClick={this.props.ApplyTestNetwork}>TestNetwork Sample</Button>
 			<Button variant="info" onClick={this.props.ApplyTestNetworkWithMonitor}>TestNetwork With Monitor Sample</Button>
 			<Button variant="info" onClick={this.props.ApplyTestNetworkMinifab}>TestNetwork Minifab</Button>
+			<Button variant="info" onClick={this.props.ApplyTestNetworkCaliper}>TestNetwork Caliper Sample</Button>
 			<ListGroup variant="flush">
 			<ListGroup>Path <input type="text" onChange={this.changePath} placeholder={this.props.todos.todos.path}/> </ListGroup>
 			<ListGroup>BatchTimeout List <input type="text" onChange={this.changeBatchTimeout} placeholder={this.props.todos.todos.BatchTimeout}/> </ListGroup>

@@ -17,6 +17,7 @@ function render(){
 			ApplyTestNetwork = {() => store.dispatch({ type: 'TEST_NET_SAMPLE' })}
 			ApplyTestNetworkWithMonitor = {() => store.dispatch({ type: 'TEST_NET_MONITOR_SAMPLE' })}
 			ApplyTestNetworkMinifab = {() => store.dispatch({ type: 'TEST_NET_MINIFAB' })}
+			ApplyTestNetworkCaliper = {() => store.dispatch({ type: 'TEST_NET_CALIPER' })}
 			dispatch = {store.dispatch}
 		/>
 	,rootEl);

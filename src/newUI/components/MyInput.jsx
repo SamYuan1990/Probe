@@ -11,6 +11,7 @@ class MyInput extends React.Component {
 		super(props);
 		this.Debug =this.Debug.bind(this);
 		this.TapeType = this.TapeType.bind(this);
+		this.CaliperType = this.CaliperType.bind(this);
 		this.ShellType = this.ShellType.bind(this);
 		this.AddItem = this.AddItem.bind(this);
 		this.RemoveItem = this.RemoveItem.bind(this);
@@ -31,6 +32,15 @@ class MyInput extends React.Component {
 		this.props.dispatch(
 			({
 				type: 'TYPE_TAPE',
+				order: this.props.data.order,
+			})
+		)
+	}
+
+	CaliperType(event){
+		this.props.dispatch(
+			({
+				type: 'TYPE_CALIPER',
 				order: this.props.data.order,
 			})
 		)
@@ -90,6 +100,7 @@ class MyInput extends React.Component {
 				>
 				<Dropdown.Item as="button" onClick={this.ShellType}>Shell</Dropdown.Item>
 				<Dropdown.Item as="button" onClick={this.TapeType}>Tape</Dropdown.Item>
+				<Dropdown.Item as="button" onClick={this.CaliperType}>Caliper</Dropdown.Item>
 				<Dropdown.Item as="button" onClick={this.PrePare}>PrePare</Dropdown.Item>
 				</DropdownButton>
 				<ListGroup.Item>{this.props.data.cmdType}</ListGroup.Item>

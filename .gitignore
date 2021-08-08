@@ -11,3 +11,5 @@ log.txt
 logger.log
 tmp
 data/rs.csv
+caliper-workspace/
+caliper.log
