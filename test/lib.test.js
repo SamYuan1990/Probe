@@ -88,9 +88,18 @@ describe('# libs', function () {
     context('CaliperTpsFilter', function() {
         it('should work', function(done) {
             const rs = {
-                output: '| readAsset | 12865 | 0 | 434.6 | 0.16 | -0.02 | 0.01 | 434.6 |\n'
+                output: `2021.08.08-07:16:44.370 info  [caliper] [report-builder]
+                +-----------+-------+------+-----------------+-----------------+-----------------+-----------------+------------------+
+                | Name      | Succ  | Fail | Send Rate (TPS) | Max Latency (s) | Min Latency (s) | Avg Latency (s) | Throughput (TPS) |
+                |-----------|-------|------|-----------------|-----------------|-----------------|-----------------|------------------|
+                | readAsset | 12774 | 0    | 431.6           | 0.21            | -0.01           | 0.01            | 431.5            |
+                +-----------+-------+------+-----------------+-----------------+-----------------+-----------------+------------------+
+                
+                2021.08.08-07:16:44.381 info  [caliper] [report-builder]        Generated report with path /hyperledger/caliper/workspace/caliper-workspace/report.html
+                2021.08.08-07:16:44.381 info  [caliper] [monitor.js]    Stopping all monitors
+                2021.08.08-07:16:44.381 info  [caliper] [worker-orchestrator]   Sending exit me`
             };
-            expect(' 434.6 ').to.be.equals(libs.CaliperTpsFilter(rs));
+            expect(' 431.5            ').to.be.equals(libs.CaliperTpsFilter(rs));
             done();
         });
     });
