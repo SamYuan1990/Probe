@@ -57,6 +57,5 @@ describe('# commands', function () {
             expect(target.args[1].length > './:/config'.length).to.be.equal(true);
             done();
         });
-
     });
 });

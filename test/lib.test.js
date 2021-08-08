@@ -67,6 +67,7 @@ describe('# libs', function () {
                 command: 'echo',
                 args: ['tx:500,duration:1.356275407s,tps:100'],
                 tps: true,
+                cmdType: 'Tape',
                 Path: './s'
             };
             expect('100').to.be.equals(libs.executeCommand(rs));
@@ -77,12 +78,23 @@ describe('# libs', function () {
     context('TapeTpsFilter', function() {
         it('should work', function(done) {
             const rs = {
-                output: 'tx: 500, duration: 1.356275407s, tps: 100\n'
+                output: 'tx: 500, duration: 1.356275407s, tps: 101\n'
             };
-            expect(' 100').to.be.equals(libs.TapeTpsFilter(rs));
+            expect(' 101').to.be.equals(libs.TapeTpsFilter(rs));
             done();
         });
     });
+
+    context('CaliperTpsFilter', function() {
+        it('should work', function(done) {
+            const rs = {
+                output: '| readAsset | 12865 | 0 | 434.6 | 0.16 | -0.02 | 0.01 | 434.6 |\n'
+            };
+            expect(' 434.6 ').to.be.equals(libs.CaliperTpsFilter(rs));
+            done();
+        });
+    });
+
 
     context('runNew', function() {
         it('run success', function(done) {
