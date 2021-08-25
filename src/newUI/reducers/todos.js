@@ -1,5 +1,11 @@
 const todos = (state = {path:'./fabric-samples/test-network', BatchTimeout:'1', MaxMessageCount:'10', AbsoluteMaxBytes:'2', PreferredMaxBytes:'512', cmd:[{order:0, cmdType: 'Shell', args:['']}]}, action) => {
     switch (action.type) {
+        case 'CHANGEALL':
+            console.log(state);
+            const jsonvalue = JSON.parse(action.value);
+            state = jsonvalue.todos;
+            console.log(action.value);
+            return state;
         case 'TEST_NET_CALIPER':
             state = {
                 path:'./fabric-samples/test-network',

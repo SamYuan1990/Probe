@@ -12,18 +12,18 @@ export default class ReactJsonView extends React.Component{
                 showImport: false,
                 showExport: false,
             }
-    
-            this.handleChange = this.handleChange.bind(this);
+            this.import = this.import.bind(this);
             this.handleshowImport = this.handleshowImport.bind(this);
             this.handleshowExport = this.handleshowExport.bind(this);
-
         }
-        
-        //改变textarea内容
-        handleChange(e){    
-            this.setState({
-                mockJson: e.target.value,
-            })
+
+        import(event){
+            this.props.dispatch(
+                ({
+                    type: 'CHANGEALL',
+                    value: event.target.value,
+                })
+            )
         }
 
         handleshowImport(e){
@@ -53,11 +53,9 @@ export default class ReactJsonView extends React.Component{
                 </Button>
                 </Card.Header>
                 <Card.Body>
-                <Collapse in={this.state.showImport}>
                 <div id="example-collapse-text">
-                    <textarea placeholder="Import form Json" onChange={this.handleChange} ></textarea>
+                    <input type="text" placeholder="Import form Json" onChange={this.import} ></input>
                 </div>
-                </Collapse>
                 </Card.Body>
                 <Card.Header>
                 <Button
@@ -69,11 +67,7 @@ export default class ReactJsonView extends React.Component{
                 </Button>
                 </Card.Header>
                 <Card.Body>
-                <Collapse in={this.state.showExport}>
-                <div id="example-collapse-text2">
                     <ReactJson src={this.props.DATAJson}/>
-                </div>
-                </Collapse>
                 </Card.Body>
                 </Card>      
             )

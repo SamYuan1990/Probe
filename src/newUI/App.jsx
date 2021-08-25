@@ -22,7 +22,7 @@ function render(){
 				ApplyTestNetworkCaliper = {() => store.dispatch({ type: 'TEST_NET_CALIPER' })}
 				dispatch = {store.dispatch}
 			/>
-			<ReactJsonView DATAJson={store.getState()}/>
+			<ReactJsonView dispatch={store.dispatch} DATAJson={store.getState()}/>
 		</div>
 	,rootEl);
 }
