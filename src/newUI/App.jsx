@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import MyList from './components/MyList.jsx'
 import { createStore } from 'redux'
 import rootReducer from './reducers'
-import ReactJsonView from './components/MyImportExport.jsx'
 
 const store = createStore(rootReducer)
 const rootEl = document.getElementById('root')
@@ -22,7 +21,6 @@ function render(){
 				ApplyTestNetworkCaliper = {() => store.dispatch({ type: 'TEST_NET_CALIPER' })}
 				dispatch = {store.dispatch}
 			/>
-			<ReactJsonView dispatch={store.dispatch} DATAJson={store.getState()}/>
 		</div>
 	,rootEl);
 }

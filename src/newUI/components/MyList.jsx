@@ -3,12 +3,17 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import MyInput from './MyInput.jsx';
+import ReactJsonView from './MyImportExport.jsx';
+import Collapse from 'react-bootstrap/Collapse';
 import $ from 'jquery';
 
 export default class MyList extends React.Component {
 	// in this is a list of MyInput
 	constructor(props) {
 		super(props);
+		this.state = {
+			showSample: false,
+		}
 		this.RUN =this.RUN.bind(this);
 		this.Check =this.Check.bind(this);
 		this.changePath =this.changePath.bind(this);
@@ -16,6 +21,7 @@ export default class MyList extends React.Component {
 		this.changeMaxMessageCount =this.changeMaxMessageCount.bind(this);
 		this.changeAbsoluteMaxBytes =this.changeAbsoluteMaxBytes.bind(this);
 		this.changePreferredMaxBytes =this.changePreferredMaxBytes.bind(this);
+		this.handleshowSample = this.handleshowSample.bind(this);
 	}
 
 
@@ -28,11 +34,11 @@ export default class MyList extends React.Component {
 		data.PreferredMaxBytes = this.props.todos.todos.PreferredMaxBytes;
 		data.path = this.props.todos.todos.path;
 		data.cmd = JSON.stringify(this.props.todos.todos.cmd);
-		alert('will run at path '+data.path);
-		alert('will run with Batch timeout list '+ data.BatchTimeout);
-		alert('will run with Max message count list '+ data.MaxMessageCount);
-		alert('will run with Absolute max bytes list '+ data.AbsoluteMaxBytes);
-		alert('will run with PreferredMaxBytes '+ data.PreferredMaxBytes);
+		//alert('will run at path '+data.path);
+		//alert('will run with Batch timeout list '+ data.BatchTimeout);
+		//alert('will run with Max message count list '+ data.MaxMessageCount);
+		//alert('will run with Absolute max bytes list '+ data.AbsoluteMaxBytes);
+		//alert('will run with PreferredMaxBytes '+ data.PreferredMaxBytes);
 		$.post('/api/run/new',data);
 	}
 
@@ -96,24 +102,70 @@ export default class MyList extends React.Component {
 		)
 	}
 
+	handleshowSample(e){
+		let value = this.state.showSample;
+		this.setState({
+			showSample: !value,
+		})
+	}
+
 	render () {
 		// console.log(JSON.stringify(this.state.arr));
 		return (
 			<div>
 			<Card>
-			<Card.Header>Config Your Commands</Card.Header>
+			<Card.Header>
+			<ReactJsonView dispatch={this.props.dispatch} DATAJson={this.props.todos}/>
+			</Card.Header>
 			<Card.Body>
-			<Button variant="info" onClick={this.props.ApplyTestNetwork}>TestNetwork Sample</Button>
-			<Button variant="info" onClick={this.props.ApplyTestNetworkWithMonitor}>TestNetwork With Monitor Sample</Button>
-			<Button variant="info" onClick={this.props.ApplyTestNetworkMinifab}>TestNetwork Minifab</Button>
-			<Button variant="info" onClick={this.props.ApplyTestNetworkCaliper}>TestNetwork Caliper Sample</Button>
+			<Button
+                        variant="info"
+                        onClick={this.handleshowSample}
+                        aria-controls="showSample"
+                        aria-expanded={open}
+                    >
+                        Try Samples
+            </Button>
+			<Collapse in={this.state.showSample}>
+            <div id="showSample">
+				<Card>
+					<Card.Body>
+					<Card.Title>TestNetwork with Tape</Card.Title>
+					<Card.Text>This Sample will use test network under fabric sample to build fabric network, and use tape to test it.</Card.Text>
+					<Button variant="success" onClick={this.props.ApplyTestNetwork}>Apply</Button>
+					</Card.Body>
+				</Card>
+				<Card>
+					<Card.Body>
+					<Card.Title>TestNetwork with Monitor</Card.Title>
+					<Card.Text>This Sample will use test network under fabric sample to build fabric network, and use tape to test it, additionally it will have a monitor on test network.</Card.Text>
+					<Button variant="success" onClick={this.props.ApplyTestNetworkWithMonitor}>Apply</Button>
+					</Card.Body>
+				</Card>
+				<Card>
+					<Card.Body>
+					<Card.Title>Minifab with Tape</Card.Title>
+					<Card.Text>This Sample will use minifab to build fabric network, and use tape to test it.</Card.Text>
+					<Button variant="success" onClick={this.props.ApplyTestNetworkMinifab}>Apply</Button>
+					</Card.Body>
+				</Card>
+				<Card>
+					<Card.Body>
+					<Card.Title>TestNetwork with Caliper</Card.Title>
+					<Card.Text>This Sample will use test network under fabric sample to build fabric network, and use caliper to test it.</Card.Text>
+					<Button variant="success" onClick={this.props.ApplyTestNetworkMinifab}>Apply</Button>
+					</Card.Body>
+				</Card>
+			</div>
+			</Collapse>
 			<ListGroup variant="flush">
+            General Settings
 			<ListGroup>Path <input type="text" onChange={this.changePath} placeholder={this.props.todos.todos.path}/> </ListGroup>
 			<ListGroup>BatchTimeout List <input type="text" onChange={this.changeBatchTimeout} placeholder={this.props.todos.todos.BatchTimeout}/> </ListGroup>
 			<ListGroup>MaxMessageCount List <input type="text" onChange={this.changeMaxMessageCount} placeholder={this.props.todos.todos.MaxMessageCount}/> </ListGroup>
 			<ListGroup>AbsoluteMaxBytes List <input type="text" onChange={this.changeAbsoluteMaxBytes} placeholder={this.props.todos.todos.AbsoluteMaxBytes}/> </ListGroup>
 			<ListGroup>PreferredMaxBytes List <input type="text" onChange={this.changePreferredMaxBytes} placeholder={this.props.todos.todos.PreferredMaxBytes}/> </ListGroup>
-			<ListGroup>Command lists</ListGroup>
+			<ListGroup>Commands for each round</ListGroup>
 			{
 				this.props.todos.todos.cmd.map((item, index) => 
 				<ListGroup.Item key={item.orderer}>
