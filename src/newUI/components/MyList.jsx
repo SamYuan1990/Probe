@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import MyInput from './MyInput.jsx';
+import ReactJsonView from './MyImportExport.jsx'
 import $ from 'jquery';
 
 export default class MyList extends React.Component {
@@ -101,7 +102,9 @@ export default class MyList extends React.Component {
 		return (
 			<div>
 			<Card>
-			<Card.Header>Config Your Commands</Card.Header>
+			<Card.Header>
+			<ReactJsonView dispatch={this.props.dispatch} DATAJson={this.props.todos}/>
+			</Card.Header>
 			<Card.Body>
 			<Button variant="info" onClick={this.props.ApplyTestNetwork}>TestNetwork Sample</Button>
 			<Button variant="info" onClick={this.props.ApplyTestNetworkWithMonitor}>TestNetwork With Monitor Sample</Button>

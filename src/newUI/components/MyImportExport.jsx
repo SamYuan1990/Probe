@@ -1,8 +1,8 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
 import ReactJson from 'react-json-view';
 import Button from 'react-bootstrap/Button';
 import Collapse from 'react-bootstrap/Collapse';
+import Alert from 'react-bootstrap/Alert';
 
 export default class ReactJsonView extends React.Component{
 
@@ -42,34 +42,37 @@ export default class ReactJsonView extends React.Component{
     
         render(){
             return(
-                <Card>
-			    <Card.Header>
-                <Button
-                    onClick={this.handleshowImport}
-                    aria-controls="example-collapse-text"
-                    aria-expanded={open}
-                >
-                    for import, please copy your data here 
-                </Button>
-                </Card.Header>
-                <Card.Body>
-                <div id="example-collapse-text">
-                    <input type="text" placeholder="Import form Json" onChange={this.import} ></input>
+                <div>
+                    <Alert variant='ligth'>
+                        Config Your Commands
+                    </Alert>
+                    <Button
+                        variant="info"
+                        onClick={this.handleshowImport}
+                        aria-controls="example-collapse-text"
+                        aria-expanded={open}
+                    >
+                        Import
+                    </Button>
+                    <Collapse in={this.state.showImport}>
+                    <div id="example-collapse-text">
+                        <textarea placeholder="Import form Json" onChange={this.import} rows="10" cols="90"></textarea>
+                    </div>
+                    </Collapse>
+                    <Button
+                        variant="info"
+                        onClick={this.handleshowExport}
+                        aria-controls="example-collapse-text2"
+                        aria-expanded={open}
+                    >
+                        Export
+                    </Button>
+                    <Collapse in={this.state.showExport}>
+                    <div id="example-collapse-text2">
+                        <ReactJson src={this.props.DATAJson}/>
+                    </div>
+                    </Collapse>   
                 </div>
-                </Card.Body>
-                <Card.Header>
-                <Button
-                    onClick={this.handleshowExport}
-                    aria-controls="example-collapse-text2"
-                    aria-expanded={open}
-                >
-                    for export, please copy your data from list below
-                </Button>
-                </Card.Header>
-                <Card.Body>
-                    <ReactJson src={this.props.DATAJson}/>
-                </Card.Body>
-                </Card>      
             )
         }
     }

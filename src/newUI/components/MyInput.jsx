@@ -112,10 +112,11 @@ class MyInput extends React.Component {
 			  	</ListGroup>
 				<Button variant="info" onClick={this.AddItem}>Add New Arg</Button>
 				<Button variant="warning" onClick={this.RemoveItem}>Remove Last Arg</Button>
-				<Button variant="warning" onClick={this.Debug}>Show Command</Button>
 			</div>
 		);
 	}
 }
+
+// <Button variant="warning" onClick={this.Debug} hidden="1">Show Command</Button>
 
 export default MyInput;
