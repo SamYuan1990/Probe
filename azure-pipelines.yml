@@ -69,7 +69,7 @@ jobs:
          displayName: checkLog
 
   - job: docker
-    displayName: e2eTestNetworkSample
+    displayName: dockerBuild
     dependsOn:
     - ut
     pool:
