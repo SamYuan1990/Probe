@@ -68,6 +68,15 @@ jobs:
        - script: cat logger.log
          displayName: checkLog
 
+  - job: docker
+    displayName: e2eTestNetworkSample
+    dependsOn:
+    - ut
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+       - script: docker build -t 19902439/probe:latest .
+         displayName: docker build
 #  - job: e2eMiniFab
 #    displayName: e2eMiniFabSample
 #    dependsOn:
