@@ -62,6 +62,14 @@ some countries and regions. At this time, users can download the [bootstrap.sh](
 1. Access `localhost:3000/result/BatchTimeout` to see TPS relationship with BatchTimeout
 1. Access `localhost:3000/result/MaxMessageCount` to see TPS relationship with MaxMessageCount
 
+--- 
+
+## Docker
+If you want to try with docker usage, welcome to use
+`docker run -d --rm --name Probe -p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/home/probe \
+  19902439/probe:latest`
+it is based on alphine, and which means, you may need to make sure your minifab/fabric sample works instead, as install for `configtxgen` or able to use docker in docker.
+
 ---
 ## Contributing
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
