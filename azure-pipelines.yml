@@ -6,6 +6,13 @@
 trigger:
 - main
 
+schedules:
+  - cron: "0 0 * * 1" # https://crontab.guru/#0_0_*_*_1
+    displayName: "Weekly Monday build"
+    branches:
+      include:
+        - master
+
 jobs:
 
   - job: lint
@@ -100,8 +107,11 @@ jobs:
 #         displayName: checkLog
 
   - job: releasePage
+    pool:
+      vmImage: "ubuntu-latest"
     dependsOn:
     - e2eTestNetwork
+
 #    - e2eMiniFab
     steps:
       - task: GitHubRelease@1
