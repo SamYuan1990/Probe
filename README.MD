@@ -49,7 +49,7 @@ Long term goal for Probe is a coordinator between Test Harness or LGC, SUT.
 If the above curl command fails, it may be that the old version of curl cannot handle redirection or cannot be redirected due to network reasons in
 
 some countries and regions. At this time, users can download the [bootstrap.sh](https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh) script then run it.
-1. Get tape `docker pull guoger/tape`
+1. Get tape `docker pull ghcr.io/hyperledger-twgc/tape`
 1. Apply the bridge file to adjust block parameters for test network `cp sample/prepareConfig.sh fabric-samples/test-network`
 1. `npm start`
 

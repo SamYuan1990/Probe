@@ -39,7 +39,7 @@ Probe是在[TWGC performance work group](https://github.com/Hyperledger-TWGC/fab
    如果上述curl命令执行失败，这可能是由于部分国家或地区的网络原因导致curl的ssl握手失败。
 在这种情况下，我们建议用户手工下载[bootstrap.sh](https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh)脚本和运行。
 
-1. 下载tape的dockeer版本 `docker pull guoger/tape`
+1. 下载tape的dockeer版本 `docker pull ghcr.io/hyperledger-twgc/tape`
 
 1. 将参数控制脚本通过以下命令安装 `cp sample/prepareConfig.sh fabric-samples/test-network`
 

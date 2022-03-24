@@ -153,4 +153,4 @@ tps = min(PreferredMaxBytes / tx size，MaxMessageCount， AbsoluteMaxBytes / tx
 
 ![batch timeout result](batchtimout.png)
 #### 后记
-本文基于[Probe](https://github.com/SamYuan1990/Probe)，[Tape](https://github.com/guoger/tape)以及[test-network](https://github.com/hyperledger/fabric-samples)，基于fabric 2.2版本image，在mac上单机进行的测试。
+本文基于[Probe](https://github.com/SamYuan1990/Probe)，[Tape](https://github.com/ghcr.io/hyperledger-twgc/tape)以及[test-network](https://github.com/hyperledger/fabric-samples)，基于fabric 2.2版本image，在mac上单机进行的测试。

@@ -151,4 +151,4 @@ Result:
 
 ![batch timeout result](batchtimout.png)
 #### Appendix
-this document basing on[Probe](https://github.com/SamYuan1990/Probe)，[Tape](https://github.com/guoger/tape) and [test-network](https://github.com/hyperledger/fabric-samples)，using fabric 2.2 image，on my Max laptop.
+this document basing on[Probe](https://github.com/SamYuan1990/Probe)，[Tape](https://github.com/ghcr.io/hyperledger-twgc/tape) and [test-network](https://github.com/hyperledger/fabric-samples)，using fabric 2.2 image，on my Max laptop.
