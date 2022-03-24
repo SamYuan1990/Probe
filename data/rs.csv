@@ -1,1 +1,3 @@
 Chaincode,BatchTimeout,MaxMessageCount,AbsoluteMaxBytes,PreferredMaxBytes,TPS,
+sample,1,10,2,512, 740.862453,
+sample,1,10,4,512, 123.862453,

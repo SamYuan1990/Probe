@@ -139,7 +139,7 @@ class InputForm extends React.Component {
 					<p>$probedir{this.state.Path}/{this.state.StartCLI} up createChannel -i 2.2</p>
 					<p>$probedir{this.state.Path}/{this.state.CCDeployCLI} deployCC -d $BatchTimeout</p>
 					<p>sleep {this.state.CoolDown}</p>
-					<p>docker run --name tape -e TAPE_LOGLEVEL=debug --network host -v $probedir:/config guoger/tape tape -c /config/config.yaml -n {this.state.TapeCount}</p>
+					<p>docker run --name tape -e TAPE_LOGLEVEL=debug --network host -v $probedir:/config ghcr.io/hyperledger-twgc/tape tape -c /config/config.yaml -n {this.state.TapeCount}</p>
 					<p hidden={!this.state.Monitor=='true'}>docker network disconnect net_test prometheus</p>
 					<p>docker rm tape</p>
 					<p>$probedir{this.state.Path}/{this.state.ShutDownCLI} down</p>

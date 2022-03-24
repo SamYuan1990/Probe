@@ -75,7 +75,7 @@ jobs:
          displayName: npmInstall
        - script: curl -vsS https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash
          displayName: downloadFabricSample
-       - script: docker pull guoger/tape
+       - script: docker pull ghcr.io/hyperledger-twgc/tape
          displayName: downloadTape
        - script: cp sample/test-network/prepareConfig.sh fabric-samples/test-network
          displayName: cpPrepareConfig
@@ -106,7 +106,7 @@ jobs:
 #    steps:
 #       - script: npm install
 #         displayName: npmInstall
-#       - script: docker pull guoger/tape
+#       - script: docker pull ghcr.io/hyperledger-twgc/tape
 #         displayName: downloadTape
 #       - script: mkdir -p minifabric && cd minifabric &&  curl -o minifab -sL https://tinyurl.com/yxa2q6yr && chmod +x minifab && cd ..
 #         displayName: download downloadMiniFab
