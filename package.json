@@ -69,6 +69,6 @@
     "redux-undo": "^1.0.1",
     "supertest": "^5.0.0",
     "webpack": "^5.70.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^5.1.4"
   }
 }
