@@ -67,7 +67,7 @@
     "redux": "^4.1.2",
     "redux-devtools": "^3.7.0",
     "redux-undo": "^1.1.0",
-    "supertest": "^5.0.0",
+    "supertest": "^7.0.0",
     "webpack": "^5.70.0",
     "webpack-cli": "^5.1.4"
   }
