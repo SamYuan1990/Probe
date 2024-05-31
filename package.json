@@ -64,7 +64,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.23.1",
     "react-transition-group": "^4.4.2",
-    "redux": "^4.1.2",
+    "redux": "^5.0.1",
     "redux-devtools": "^3.7.0",
     "redux-undo": "^1.1.0",
     "supertest": "^7.0.0",
