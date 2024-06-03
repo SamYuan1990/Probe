@@ -30,7 +30,7 @@
     "body-parser": "^1.19.2",
     "cookie-parser": "^1.4.6",
     "csv": "^5.5.3",
-    "debug": "~4.3.4",
+    "debug": "~4.3.5",
     "ejs": "^3.1.6",
     "express": "^4.19.2",
     "express-rate-limit": "^7.2.0",
