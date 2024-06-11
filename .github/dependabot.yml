@@ -4,4 +4,8 @@ updates:
     directory: '/'
     schedule:
       interval: daily
+    groups:
+      npm-dependencies:
+        patterns:
+          - "*"
     open-pull-requests-limit: 10
